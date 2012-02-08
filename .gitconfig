@@ -1,0 +1,28 @@
+[color]
+  branch = auto
+  diff = always
+  ui = always
+[color "branch"]
+  current = green
+  local = yellow
+  remote = cyan
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = cyan
+[alias]
+  track = !sh -c 'git branch --track "$0" "origin/$0" && git checkout "$0"'
+  untracked = "!git ls-files --others --exclude-standard"
+  log-full = log --pretty=fuller --stat
+  log-one = log --pretty=one --stat
+  log-files = log --stat
+[user]
+  name = Leonardo Crauss Daronco
+  email = leonardodaronco@gmail.com
+[format]
+  pretty = format:"%Cblue%H%Creset %Cgreen%s %Creset%n  %ad %m %ae"
