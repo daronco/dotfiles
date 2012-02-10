@@ -11,6 +11,7 @@
   frag = magenta
   old = red
   new = green
+  whitespace = red reverse
 [color "status"]
   added = green
   changed = yellow
