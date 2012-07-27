@@ -49,5 +49,5 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/.gemrc ~/.gemrc
   ln -sfv $PWD/.bash_aliases ~/.bash_aliases
   #ln -sfv $PWD/.emacs ~/.emacs
-  rm -rf ~/.emacs.d/personal && ln -sfv $PWD/prelude-personal ~/.emacs.d/personal
+  rm -rf ~/.emacs.d/personal && ln -sfv $PWD/prelude-personal/personal ~/.emacs.d/personal
 fi
