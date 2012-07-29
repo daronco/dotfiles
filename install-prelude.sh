@@ -51,3 +51,7 @@ if [[ $REPLY == [yY] ]]; then
   #ln -sfv $PWD/.emacs ~/.emacs
   rm -rf ~/.emacs.d/personal && ln -sfv $PWD/prelude-personal/personal ~/.emacs.d/personal
 fi
+
+echo "-------------------------------------------------------------------------"
+echo " NOTE: ~/.bashrc was NOT edited. Do it manually."
+echo "-------------------------------------------------------------------------"
