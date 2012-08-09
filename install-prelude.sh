@@ -35,6 +35,7 @@ install_prelude () {
     OLD_PWD=$PWD
     cd $PRELUDE_INSTALL_DIR; git pull origin master; cd $OLD_PWD;
   else
+    rm -rf $PRELUDE_INSTALL_DIR
     curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
   fi
 }
