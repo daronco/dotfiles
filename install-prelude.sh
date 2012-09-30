@@ -30,14 +30,8 @@ fi
 
 PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
 install_prelude () {
-  if [ -d $PRELUDE_INSTALL_DIR/prelude ] # If prelude is already installed
-  then
-    OLD_PWD=$PWD
-    cd $PRELUDE_INSTALL_DIR; git pull origin master; cd $OLD_PWD;
-  else
-    rm -rf $PRELUDE_INSTALL_DIR
-    curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
-  fi
+  rm -rf $PRELUDE_INSTALL_DIR
+  curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
 }
 
 if [[ $REPLY == [yY] ]]; then
