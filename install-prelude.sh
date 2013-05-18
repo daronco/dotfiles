@@ -17,6 +17,8 @@ echo " WARNING: this will override:"
 echo "          ~/.gitconfig"
 echo "          ~/.gemrc"
 echo "          ~/.bash_aliases"
+echo "          ~/.bashrc"
+echo "          ~/.profile"
 echo "          ~/.emacs"
 echo "          ~/.emacs.d/"
 echo "-------------------------------------------------------------------------"
@@ -43,10 +45,8 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/.gitconfig ~/.gitconfig
   ln -sfv $PWD/.gemrc ~/.gemrc
   ln -sfv $PWD/.bash_aliases ~/.bash_aliases
+  ln -sfv $PWD/.bashrc ~/.bashrc
+  ln -sfv $PWD/.profile ~/.profile
   #ln -sfv $PWD/.emacs ~/.emacs
   rm -rf ~/.emacs.d/personal && ln -sfv $PWD/prelude-personal/personal ~/.emacs.d/personal
 fi
-
-echo "-------------------------------------------------------------------------"
-echo " NOTE: ~/.bashrc was NOT edited. Do it manually."
-echo "-------------------------------------------------------------------------"
