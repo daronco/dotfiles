@@ -1,6 +1,3 @@
-[submodule "emacsOnRails"]
-	path = emacsOnRails
-	url = git@github.com:daronco/emacsOnRails.git
 [submodule "prelude-personal"]
 	path = prelude-personal
 	url = git@github.com:daronco/prelude-personal.git
