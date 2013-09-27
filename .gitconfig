@@ -27,3 +27,6 @@
   email = leonardodaronco@gmail.com
 [format]
   pretty = format:"%Cblue%H%Creset %Cgreen%s %Creset%n  %ad %m %ae"
+[merge]
+	tool = meld
+	verbosity = 3
