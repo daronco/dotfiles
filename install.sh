@@ -36,17 +36,36 @@ install_prelude () {
   curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
 }
 
+OHMYZSH_INSTALL_DIR="$HOME/.oh-my-zsh"
+install_on_my_zsh () {
+    rm -rf $OHMYZSH_INSTALL_DIR
+    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+}
+
+OHMYZSH_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
+install_on_my_zsh_plugins () {
+    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $OHMYZSH_PLUGINS_DIR/zsh-syntax-highlighting
+}
+
+
 if [[ $REPLY == [yY] ]]; then
   git submodule init
   git submodule update
 
-  install_prelude
-
+  # bash, git, etc
   ln -sfv $PWD/.gitconfig ~/.gitconfig
   ln -sfv $PWD/.gemrc ~/.gemrc
   ln -sfv $PWD/.bash_aliases ~/.bash_aliases
   ln -sfv $PWD/.bashrc ~/.bashrc
   ln -sfv $PWD/.profile ~/.profile
-  #ln -sfv $PWD/.emacs ~/.emacs
+
+  # emacs
+  install_prelude
   rm -rf ~/.emacs.d/personal && ln -sfv $PWD/prelude-personal/personal ~/.emacs.d/personal
+
+  # zsh
+  install_on_my_zsh
+  install_on_my_zsh_plugins
+  ln -sfv $PWD/.zshrc ~/.zshrc
+
 fi
