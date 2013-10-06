@@ -67,7 +67,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github ruby rails history-substring-search zsh-syntax-highlighting)
+plugins=(git github ruby rails rbenv history-substring-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,10 +76,6 @@ export PATH=$PATH:/home/leonardo/.nvm/v0.8.9/bin:/home/leonardo/.rbenv/shims:/ho
 
 # Emacs
 export TERM='xterm-256color'
-
-# rbenv
-# export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
 
 # nvm
 source ~/.nvm/nvm.sh
