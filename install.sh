@@ -37,13 +37,14 @@ install_prelude () {
 }
 
 OHMYZSH_INSTALL_DIR="$HOME/.oh-my-zsh"
+OHMYZSH_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
+OHMYZSH_THEMES_DIR="$HOME/.oh-my-zsh/custom/themes"
 install_on_my_zsh () {
     rm -rf $OHMYZSH_INSTALL_DIR
     wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 }
-
-OHMYZSH_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
 install_on_my_zsh_plugins () {
+    mkdir -p $OHMYZSH_PLUGINS_DIR
     git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $OHMYZSH_PLUGINS_DIR/zsh-syntax-highlighting
 }
 
@@ -67,5 +68,7 @@ if [[ $REPLY == [yY] ]]; then
   install_on_my_zsh
   install_on_my_zsh_plugins
   ln -sfv $PWD/.zshrc ~/.zshrc
+  # zsh themes
+  ln -sfv $PWD/zsh/themes $OHMYZSH_THEMES_DIR
 
 fi
