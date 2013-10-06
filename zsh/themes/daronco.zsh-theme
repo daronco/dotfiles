@@ -1,47 +1,55 @@
 # daronco
 # strongly based on crunch (and others).
 
+# TODO: user@machine when logged via ssh
+
 # colors
-DARONCO_BRACKET_COLOR="%{$fg[white]%}"
-DARONCO_TIME_COLOR="%{$fg[white]%}"
-DARONCO_RVM_COLOR="%{$fg[magenta]%}"
-DARONCO_DIRCOLOR="%{$fg[cyan]%}"
-DARONCO_GIT_BRANCH_COLOR="%{$fg[green]%}"
-DARONCO_GIT_CLEAN_COLOR="%{$fg[green]%}"
-DARONCO_GIT_DIRTY_COLOR="%{$fg[red]%}"
-DARONCO_GIT_UNTRACKED_COLOR="%{$fg[cyan]%}"
-DARONCO_RBENV_COLOR="%{$fg[yellow]%}"
+BRACKET_COLOR="%{$fg[white]%}"
+TIME_COLOR="%{$fg[white]%}"
+DIRCOLOR="%{$fg[cyan]%}"
+GIT_BRANCH_COLOR="%{$fg[green]%}"
+GIT_CLEAN_COLOR="%{$fg_bold[green]%}"
+GIT_DIRTY_COLOR="%{$fg_bold[red]%}"
+GIT_UNTRACKED_COLOR="%{$fg_bold[cyan]%}"
+RBENV_COLOR="%{$fg[yellow]%}"
+ARROW_COLOR="%{$fg_bold[white]%}"
 
 # git (used by oh-my-zsh git_prompt_info helper)
-ZSH_THEME_GIT_PROMPT_PREFIX="$DARONCO_BRACKET_COLOR:$DARONCO_GIT_BRANCH_COLOR"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="$DARONCO_GIT_DIRTY_COLOR ±"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="$DARONCO_GIT_UNTRACKED_COLOR ?"
-ZSH_THEME_GIT_PROMPT_CLEAN="$DARONCO_GIT_CLEAN_COLOR ●"
-#ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ✓"
+ZSH_THEME_GIT_PROMPT_PREFIX="$BRACKET_COLOR($GIT_BRANCH_COLOR"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}$BRACKET_COLOR)%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="$GIT_DIRTY_COLOR ±"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="$GIT_UNTRACKED_COLOR ?"
+#ZSH_THEME_GIT_PROMPT_CLEAN="$GIT_CLEAN_COLOR 0"
+#ZSH_THEME_GIT_PROMPT_CLEAN="$GIT_CLEAN_COLOR ✓"
+ZSH_THEME_GIT_PROMPT_CLEAN="$GIT_CLEAN_COLOR ●"
 
 # hour
-DARONCO_TIME="$DARONCO_BRACKET_COLOR$DARONCO_TIMECOLOR%T$DARONCO_BRACKET_COLOR%{$reset_color%}"
+TIME="$BRACKET_COLOR$TIMECOLOR%T$BRACKET_COLOR%{$reset_color%}"
 
-# rvm
+# rvm/rbenv
 if [ -e ~/.rvm/bin/rvm-prompt ]; then
-  DARONCO_RVM="$DARONCO_BRACKET_COLOR"["$DARONCO_RVMCOLOR\${\$(~/.rvm/bin/rvm-prompt i v g)#ruby-}$DARONCO_BRACKET_COLOR"]"%{$reset_color%}"
+  RVM="$BRACKET_COLOR"["$RBENV_COLOR\${\$(~/.rvm/bin/rvm-prompt i v g)#ruby-}$BRACKET_COLOR"]"%{$reset_color%}"
 else
   if which rbenv &> /dev/null; then
-    # DARONCO_RVM="$DARONCO_BRACKET_COLOR"["$DARONCO_RVMCOLOR\${\$(rbenv version | sed -e 's/ (set.*$//' -e 's/^ruby-//')}$DARONCO_BRACKET_COLOR"]"%{$reset_color%}"
-    DARONCO_RVM='$DARONCO_RBENV_COLOR$(current_ruby)%{$reset_color%}'
+    # RVM="$BRACKET_COLOR"["$RBENV_COLOR\${\$(rbenv version | sed -e 's/ (set.*$//' -e 's/^ruby-//')}$BRACKET_COLOR"]"%{$reset_color%}"
+    RVM='$RBENV_COLOR$(current_ruby)%{$reset_color%}'
   fi
 fi
 
 # dir
-DARONCO_DIR="$DARONCO_DIRCOLOR%~\$(git_prompt_info)"
-
-# arrow at the end
-DARONCO_ARROW="$DARONCO_TIMECOLOR➜%{$reset_color%}"
+DIR="$DIRCOLOR%~\$(git_prompt_info)"
 
 # user name
 if [ $UID -eq 0 ]; then NCOLOR="%{$fg_bold[magenta]%}"; else NCOLOR="%{$fg[cyan]%}"; fi
-DARONCO_USER="$NCOLOR%n%{$reset_color%}"
+USER='$NCOLOR%n%{$reset_color%}'
+
+# arrow at the end
+# LIMITER="$TIMECOLOR➜%{$reset_color%}"
+if [ $UID -eq 0 ]; then
+  LIMITER="%{$fg_bold[magenta]%}#%{$reset_color%}"
+else
+  LIMITER="%{$fg_bold[white]%}$%{$reset_color%}"
+fi
 
 # put it all together
-PROMPT="$DARONCO_USER@$DARONCO_TIME $DARONCO_RVM $DARONCO_DIR $DARONCO_ARROW %{$reset_color%}"
+PROMPT="$USER@$TIME $DIR $LIMITER %{$reset_color%}"

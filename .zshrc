@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# TODO: too much stuff here already, time to organize it
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -35,8 +37,8 @@ alias grep-rails='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc -
 # From: http://stackoverflow.com/questions/4589731/git-blame-statistics
 alias git-contrib-full='git ls-tree -r HEAD|sed -re "s/^.{53}//"|while read filename; do file "$filename"; done|grep -E ": .*text"|sed -r -e "s/: .*//"|while read filename; do git blame -w "$filename"; done|sed -r -e "s/.*\((.*)[0-9]{4}-[0-9]{2}-[0-9]{2} .*/\1/" -e "s/ +$//"|sort|uniq -c'
 
-# Rails, ruby
-alias be="bundle exec "
+# # aliases
+# [[ -f ~/.aliases ]] && source ~/.aliases
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -67,7 +69,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github ruby rails rbenv history-substring-search zsh-syntax-highlighting)
+plugins=(git github ruby bundler gem rails3 rbenv zeus node npm cake coffee command-not-found battery colored-man extract rsync rand-quote history-substring-search history pj last-working-dir zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,3 +92,41 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 # from: superuser.com/questions/439209/how-to-partially-disable-the-zshs-autocorrect#answer-610025
 unsetopt correct_all
 setopt correct
+
+# ignore duplicate history entries
+setopt histignoredups
+
+# keep TONS of history
+export HISTSIZE=4096
+
+# overrides definition from the plugin bundler
+# my bundler doesn't have the flag --jobs yet
+eval "alias bi='bundle install'" # --jobs=$cores_num'"
+
+PROJECT_PATHS=(~/GT-Mconf/Dev/mconf ~/GT-Mconf/Dev/daronco ~/GT-Mconf/Dev/bigbluebutton ~/Dev)
+
+killit() {
+ # Kills any process that matches a regexp passed to it
+ ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
+}
+
+#if [ -z "\${which tree}" ]; then
+tree () {
+  find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+}
+#fi
+
+exip () {
+    # gather external ip address
+    echo -n "Current External IP: "
+    curl -s -m 5 http://myip.dk | grep "ha4" | sed -e 's/.*ha4">//g' -e 's/<\/span>.*//g'
+}
+
+ips () {
+    # determine local IP address
+    ifconfig | grep "inet " | awk '{ print $2 }'
+}
+
+shell () {
+    ps | grep `echo $$` | awk '{ print $4 }'
+}
