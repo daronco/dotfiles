@@ -85,3 +85,8 @@ source ~/.nvm/nvm.sh
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# disable correct for parameters, but enable for commands
+# from: superuser.com/questions/439209/how-to-partially-disable-the-zshs-autocorrect#answer-610025
+unsetopt correct_all
+setopt correct
