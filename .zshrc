@@ -69,7 +69,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github ruby bundler gem rails3 rbenv zeus node npm cake coffee command-not-found battery colored-man extract rsync rand-quote history-substring-search history pj last-working-dir zsh-syntax-highlighting)
+plugins=(git github ruby bundler gem rails3 rbenv zeus node npm coffee command-not-found battery colored-man extract rsync rand-quote history-substring-search history pj last-working-dir zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,7 +80,7 @@ export PATH=$PATH:/home/leonardo/.nvm/v0.8.9/bin:/home/leonardo/.rbenv/shims:/ho
 export TERM='xterm-256color'
 
 # nvm
-source ~/.nvm/nvm.sh
+# source ~/.nvm/nvm.sh
 
 # for history-substring-search
 # bind UP and DOWN arrow keys
