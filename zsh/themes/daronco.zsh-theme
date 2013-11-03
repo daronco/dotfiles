@@ -19,7 +19,6 @@ ZSH_THEME_GIT_PROMPT_PREFIX="$BRACKET_COLOR($GIT_BRANCH_COLOR"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}$BRACKET_COLOR)%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="$GIT_DIRTY_COLOR ±"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="$GIT_UNTRACKED_COLOR ?"
-#ZSH_THEME_GIT_PROMPT_CLEAN="$GIT_CLEAN_COLOR 0"
 #ZSH_THEME_GIT_PROMPT_CLEAN="$GIT_CLEAN_COLOR ✓"
 ZSH_THEME_GIT_PROMPT_CLEAN="$GIT_CLEAN_COLOR ●"
 
@@ -36,8 +35,10 @@ else
   fi
 fi
 
-# dir
+# dir with git info
 DIR="$DIRCOLOR%~\$(git_prompt_info)"
+# dir without git info (faster when the dir is mounted from a vm)
+# DIR="$DIRCOLOR%~"
 
 # user name
 if [ $UID -eq 0 ]; then NCOLOR="%{$fg_bold[magenta]%}"; else NCOLOR="%{$fg[cyan]%}"; fi
