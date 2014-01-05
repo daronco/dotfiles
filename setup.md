@@ -1,6 +1,6 @@
-# Setting up a new system
+# Setup
 
-Applications, configs, dotfiles, etc.
+Things to remember...
 
 
 # Ubuntu
@@ -12,13 +12,13 @@ Current version: 13.10
 Basic:
 
 ```bash
-sudo apt-get install build-essential curl aptitude yakuake gnome-shell zsh git git-gui meld xclip
+sudo apt-get install build-essential curl aptitude yakuake gnome-shell zsh git git-gui xclip
 ```
 
-Extra:
+2nd pass:
 
 ```bash
-sudo apt-get install lm-sensors gnome-tweak-tool
+sudo apt-get install vlc lm-sensors gnome-tweak-tool meld vim gimp
 ```
 
 emacs24 (more at [https://launchpad.net/~cassou/+archive/emacs](https://launchpad.net/~cassou/+archive/emacs)):
@@ -68,6 +68,17 @@ git submodule update
 * Appearance -> Behavior -> Auto-hide the Launcher
 * Appearance -> Behavior -> Enable workspaces
 
+## Ubuntu-Tweak
+
+```bash
+sudo add-apt-repository ppa:tualatrix/ppa
+sudo apt-get update
+sudo apt-get install ubuntu-tweak
+```
+
+* Ubuntu Tweak -> Tweaks -> Fonts: -1 for each
+
+
 ## Firefox
 
 Preferences:
@@ -79,6 +90,9 @@ Plugins:
 
 * Session Manager: https://addons.mozilla.org/en-US/firefox/addon/session-manager/
 
+## Chrome
+
+Settings -> Appearance -> Use system title bars and borders
 
 ## Gnome
 
@@ -118,6 +132,12 @@ Themes ([http://gnome-look.org/?xcontentmode=191](http://gnome-look.org/?xconten
 
 Extract them to `/usr/share/themes/` (on `~/.themes` won't be able to pick them for window theme).
 
+For our custom theme:
+
+```bash
+sudo cp -r gnome-shell/Daronco /usr/share/themes/
+```
+
 * Adwaita-x-dark: http://gnome-look.org/content/show.php?content=150905
 * Mediterranean: http://gnome-look.org/content/show.php/MediterraneanNight+Series?content=156782
 * Faience: http://gnome-look.org/content/show.php/Faience?content=144815
@@ -125,9 +145,15 @@ Extract them to `/usr/share/themes/` (on `~/.themes` won't be able to pick them 
 
 Configurations:
 
+```bash
+gsettings set org.gnome.desktop.interface gtk-theme Adwaita-X-dark
+gsettings set org.gnome.desktop.wm.preferences theme Adwaita-X-dark
+```
+
 * Gnome Tweak -> Theme -> Current theme: Adwaita-X-dark
 * Gnome Tweak -> Theme -> Gtk+ theme: Adwaita-X-dark | MediterraneanNightDarkest
-* Gnome Tweak -> Theme -> Shell theme: Faience
+* Gnome Tweak -> Theme -> Shell theme: Daronco
+* Gnome Tweak -> Theme -> Icon theme: Oxygen
 * Gnome Tweak -> Shell -> Show date in clock
 * Gnome Tweak -> Shell -> Arrangement of buttons -> All
 
@@ -152,6 +178,16 @@ Preferences:
 * Configure Yakuake -> Size and Animation: whatever...
 * Configure Yakuake -> Appearance -> General -> Highlight terminals when moving focus between them
 * Configure Yakuake -> Appearance -> Window Background -> Use translucency: 80%
+
+## Hardware Sensors Indicator
+
+```bash
+sudo add-apt-repository ppa:alexmurray/indicator-sensors
+sudo apt-get update
+sudo apt-get install indicator-sensors
+```
+
+* Startup Applications: Add an entry `indicator-sensors`
 
 ## Other
 
