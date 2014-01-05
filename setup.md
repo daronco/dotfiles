@@ -21,6 +21,14 @@ Extra:
 sudo apt-get install lm-sensors gnome-tweak-tool
 ```
 
+emacs24 (more at [https://launchpad.net/~cassou/+archive/emacs](https://launchpad.net/~cassou/+archive/emacs)):
+
+```bash
+sudo add-apt-repository ppa:cassou/emacs
+sudo apt-get update
+sudo apt-get install emacs24 emacs24-el emacs24-common-non-dfsg
+```
+
 SSH keys:
 
 ```bash
@@ -29,12 +37,12 @@ ssh-keygen  # just to create ~/.ssh
 # copy the old keys to ~/.ssh/id_rsa and ~/.ssh/id_rsa.pub
 
 ssh-add ~/.ssh/id_rsa
-ssh-add -l # check it
+ssh-add -l              # check it
+ssh -vT git@github.com  # check against GitHub
 ```
 
-Start using zsh: Yakuake -> Edit current profile -> General -> Command: `/bin/zsh`
-
 Open a new terminal window and:
+
 
 ```bash
 git clone git@github.com:daronco/terminal-stuff.git
@@ -42,14 +50,6 @@ cd terminal-stuff
 git submodule init
 git submodule update
 ./install.sh
-```
-
-Install emacs24 (more at [https://launchpad.net/~cassou/+archive/emacs](https://launchpad.net/~cassou/+archive/emacs)):
-
-```bash
-sudo add-apt-repository ppa:cassou/emacs
-sudo apt-get update
-sudo apt-get install emacs24 emacs24-el emacs24-common-non-dfsg
 ```
 
 
@@ -61,6 +61,12 @@ sudo apt-get install emacs24 emacs24-el emacs24-common-non-dfsg
 
 
 # Configurations
+
+## Ubuntu
+
+* Appearance -> Look -> Launcher icon size: 40
+* Appearance -> Behavior -> Auto-hide the Launcher
+* Appearance -> Behavior -> Enable workspaces
 
 ## Firefox
 
@@ -138,13 +144,14 @@ Kill yakuake, start it again.
 
 Preferences:
 
-* Edit current profile -> Appearance -> Color scheme: `Zenburn-daronco`
+* Startup Applications: Add an entry `yakuake`
+* Edit Current Profile -> General -> Command: `/bin/zsh`
+* Edit Current Profile -> Appearance -> Color scheme: `Zenburn-daronco`
+* Edit Current Profile -> Scrolling -> Fixed size scrollback: 50000 lines
 * Configure Yakuake -> Tab Bar: Show title bar contents in tab labels
-* Configure Yakuake -> Size and Animation: whatever...
 * Configure Yakuake -> Size and Animation: whatever...
 * Configure Yakuake -> Appearance -> General -> Highlight terminals when moving focus between them
 * Configure Yakuake -> Appearance -> Window Background -> Use translucency: 80%
-* Edit Current Profile -> Scrolling -> Fixed size scrollback: 50000 lines
 
 ## Other
 
