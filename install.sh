@@ -50,9 +50,6 @@ install_on_my_zsh_plugins () {
 
 
 if [[ $REPLY == [yY] ]]; then
-  git submodule init
-  git submodule update
-
   # bash, git, etc
   ln -sfv $PWD/.gitconfig ~/.gitconfig
   ln -sfv $PWD/.gemrc ~/.gemrc

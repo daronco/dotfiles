@@ -47,8 +47,6 @@ Open a new terminal window and:
 ```bash
 git clone git@github.com:daronco/terminal-stuff.git
 cd terminal-stuff
-git submodule init
-git submodule update
 ./install.sh
 ```
 
