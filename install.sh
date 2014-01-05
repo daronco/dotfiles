@@ -63,6 +63,7 @@ if [[ $REPLY == [yY] ]]; then
   # emacs
   install_prelude
   rm -rf ~/.emacs.d/personal && ln -sfv $PWD/prelude-personal/personal ~/.emacs.d/personal
+  rm -rf ~/.emacs.d/themes && ln -sfv $PWD/prelude-personal/themes ~/.emacs.d/themes
 
   # zsh
   install_on_my_zsh
