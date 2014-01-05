@@ -79,7 +79,6 @@ Plugins:
 Extensions ([https://extensions.gnome.org/](https://extensions.gnome.org/)):
 
 * User Themes: https://extensions.gnome.org/extension/19/user-themes/
-* Remove Rounded Corners: https://extensions.gnome.org/extension/448/remove-rounded-corners/
 * AlternateTab: https://extensions.gnome.org/extension/15/alternatetab/
 * Alternative Status Menu: https://extensions.gnome.org/extension/5/alternative-status-menu/
 * Native Window Placement: https://extensions.gnome.org/extension/18/native-window-placement/
@@ -96,6 +95,12 @@ Themes ([http://gnome-look.org/?xcontentmode=191](http://gnome-look.org/?xconten
 
 Extract them to `/usr/share/themes/` (on `~/.themes` won't be able to pick them for window theme).
 
+For our custom theme:
+
+```bash
+sudo cp -r gnome-shell/Daronco /usr/share/themes/
+```
+
 * Adwaita-x-dark: http://gnome-look.org/content/show.php?content=150905
 * Mediterranean: http://gnome-look.org/content/show.php/MediterraneanNight+Series?content=156782
 * Faience: http://gnome-look.org/content/show.php/Faience?content=144815
@@ -105,7 +110,8 @@ Configurations:
 
 * Gnome Tweak -> Theme -> Current theme: Adwaita-X-dark
 * Gnome Tweak -> Theme -> Gtk+ theme: Adwaita-X-dark | MediterraneanNightDarkest
-* Gnome Tweak -> Theme -> Shell theme: Faience
+* Gnome Tweak -> Theme -> Shell theme: Daronco
+* Gnome Tweak -> Theme -> Icon theme: Oxygen
 * Gnome Tweak -> Shell -> Show date in clock
 * Gnome Tweak -> Shell -> Arrangement of buttons -> All
 
