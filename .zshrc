@@ -103,7 +103,7 @@ export HISTSIZE=4096
 # my bundler doesn't have the flag --jobs yet
 eval "alias bi='bundle install'" # --jobs=$cores_num'"
 
-PROJECT_PATHS=(~/GT-Mconf/Dev/mconf ~/GT-Mconf/Dev/daronco ~/GT-Mconf/Dev/bigbluebutton ~/Dev)
+PROJECT_PATHS=(~/Dev/mconf ~/Dev/daronco ~/Dev/bigbluebutton)
 
 killit() {
  # Kills any process that matches a regexp passed to it
