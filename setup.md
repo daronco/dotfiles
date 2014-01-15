@@ -106,6 +106,7 @@ Extensions ([https://extensions.gnome.org/](https://extensions.gnome.org/)):
 * Frippery Move Clock: https://extensions.gnome.org/extension/2/move-clock/
 * Headphone Event: https://extensions.gnome.org/extension/316/headphone-indicator/
 * Impatience: https://extensions.gnome.org/extension/277/impatience/
+* Lock Screen: https://extensions.gnome.org/extension/715/lock-screen/
 * Message Notifier: https://extensions.gnome.org/extension/150/message-notifier/
 * Minimized Window Reminder: https://extensions.gnome.org/extension/403/minimized-window-reminder/
 * Native Window Placement: https://extensions.gnome.org/extension/18/native-window-placement/
