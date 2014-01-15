@@ -18,7 +18,7 @@ sudo apt-get install build-essential curl aptitude yakuake gnome-shell zsh git g
 2nd pass:
 
 ```bash
-sudo apt-get install vlc lm-sensors gnome-tweak-tool meld vim gimp
+sudo apt-get install vlc lm-sensors gnome-tweak-tool meld vim gimp libgeoip-dev
 ```
 
 emacs24 (more at [https://launchpad.net/~cassou/+archive/emacs](https://launchpad.net/~cassou/+archive/emacs)):
@@ -75,6 +75,7 @@ sudo apt-get install ubuntu-tweak
 ```
 
 * Ubuntu Tweak -> Tweaks -> Fonts: -1 for each
+* Ubuntu Tweak -> Tweaks -> Window -> Window control button position: Left
 
 
 ## Firefox
@@ -171,7 +172,7 @@ Preferences:
 
 * Startup Applications: Add an entry `yakuake`
 * Edit Current Profile -> General -> Command: `/bin/zsh`
-* Edit Current Profile -> Appearance -> Color scheme: `Zenburn-daronco`
+* Edit Current Profile -> Appearance -> Color scheme: `zzenburn`
 * Edit Current Profile -> Scrolling -> Fixed size scrollback: 50000 lines
 * Configure Yakuake -> Tab Bar: Show title bar contents in tab labels
 * Configure Yakuake -> Size and Animation: whatever...
@@ -182,8 +183,7 @@ Preferences:
 
 ```bash
 sudo add-apt-repository ppa:alexmurray/indicator-sensors
-sudo apt-get update
-sudo apt-get install indicator-sensors
+sudo apt-get update && sudo apt-get install indicator-sensors
 ```
 
 * Startup Applications: Add an entry `indicator-sensors`
