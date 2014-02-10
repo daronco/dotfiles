@@ -56,6 +56,7 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/.bash_aliases ~/.bash_aliases
   ln -sfv $PWD/.bashrc ~/.bashrc
   ln -sfv $PWD/.profile ~/.profile
+  ln -sfv $PWD/ssh_config ~/.ssh/config
 
   # emacs
   install_prelude
