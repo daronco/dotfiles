@@ -30,3 +30,5 @@
 [merge]
 	tool = meld
 	verbosity = 3
+[core]
+	editor = vim
