@@ -11,6 +11,15 @@
 ; Disable line wrapping
 (setq-default truncate-lines t)
 
+; Show line numbers on the left and configure their format
+(global-linum-mode 1)
+(custom-set-variables '(linum-format 'dynamic))
+(defadvice linum-update-window (around linum-dynamic activate)
+  (let* ((w (length (number-to-string
+                     (count-lines (point-min) (point-max)))))
+         (linum-format (concat "%" (number-to-string w) "d  ")))
+    ad-do-it))
+
 ; Indentation
 (setq-default tab-width 2)              ; 2-space indent as default
 (setq ruby-indent-level 2)              ; 2-space in ruby

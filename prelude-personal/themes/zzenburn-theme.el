@@ -542,7 +542,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-reconciler-pending-face ((t (:foreground ,zzenburn-orange :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,zzenburn-orange :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground ,zzenburn-green+2 :background ,zzenburn-bg))))
+   `(linum ((t (:foreground ,zzenburn-bg+2 :background ,zzenburn-bg))))
 ;;;;; macrostep
    `(macrostep-gensym-1
      ((t (:foreground ,zzenburn-green+2 :background ,zzenburn-bg-1))))
