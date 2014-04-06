@@ -12,21 +12,13 @@ Current version: 13.10
 Basic:
 
 ```bash
-sudo apt-get install build-essential curl aptitude yakuake gnome-shell zsh git git-gui xclip
+sudo apt-get install build-essential curl aptitude yakuake gnome-shell zsh git git-gui xclip emacs24
 ```
 
 2nd pass:
 
 ```bash
 sudo apt-get install vlc lm-sensors gnome-tweak-tool meld vim gimp libgeoip-dev
-```
-
-emacs24 (more at [https://launchpad.net/~cassou/+archive/emacs](https://launchpad.net/~cassou/+archive/emacs)):
-
-```bash
-sudo add-apt-repository ppa:cassou/emacs
-sudo apt-get update
-sudo apt-get install emacs24 emacs24-el emacs24-common-non-dfsg
 ```
 
 SSH keys:
