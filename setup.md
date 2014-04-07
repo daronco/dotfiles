@@ -68,6 +68,7 @@ sudo apt-get install ubuntu-tweak
 
 * Ubuntu Tweak -> Tweaks -> Fonts: -1 for each
 * Ubuntu Tweak -> Tweaks -> Window -> Window control button position: Left
+* Ubuntu Tweak -> Tweaks -> Window -> "Close" button only: off
 
 
 ## Firefox
