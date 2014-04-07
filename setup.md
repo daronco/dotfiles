@@ -148,7 +148,6 @@ gsettings set org.gnome.desktop.wm.preferences theme Adwaita-X-dark
 * Gnome Tweak -> Theme -> Shell theme: Daronco
 * Gnome Tweak -> Theme -> Icon theme: Oxygen
 * Gnome Tweak -> Shell -> Show date in clock
-* Gnome Tweak -> Shell -> Arrangement of buttons -> All
 
 
 ## Yakuake
