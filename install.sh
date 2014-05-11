@@ -21,6 +21,7 @@ echo "          ~/.bashrc"
 echo "          ~/.profile"
 echo "          ~/.emacs"
 echo "          ~/.emacs.d/"
+echo "          ~/.config/beets"
 echo "-------------------------------------------------------------------------"
 echo
 
@@ -69,5 +70,11 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/.zshrc ~/.zshrc
   # zsh themes
   ln -sfv $PWD/zsh/themes $OHMYZSH_THEMES_DIR
+
+  # beets
+  sudo apt-get install python-pip
+  rm -rf ~/.config/beets
+  mkdir -p ~/.config
+  ln -sfv $PWD/beets/config ~/.config/beets
 
 fi

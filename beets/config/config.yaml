@@ -1,0 +1,10 @@
+directory: /media/leonardo/rocky/My/Music2/
+library: ~/.config/beets/musiclibrary.blb
+import:
+    move: yes
+    log: ~/.config/beets/import.log
+paths:
+    default: $albumartist/$year $album/$track $title
+    singleton: Non-Album/$artist/$title
+    comp: Compilations/$year $album/$track $title
+plugins: fetchart lastgenre embedart missing
