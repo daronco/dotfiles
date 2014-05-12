@@ -26,6 +26,7 @@ ZSH_THEME="daronco"
 alias emacs='emacs -nw'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
+alias estart='emacs --daemon'
 alias ekill='emacsclient -e "(kill-emacs)"'
 
 # Greps
