@@ -20,6 +20,8 @@
 (define-key my-keys-minor-mode-map (kbd "C-c M-a") 'rspec-verify-all)     ; everything
 (define-key my-keys-minor-mode-map (kbd "C-c M-t") 'rspec-toggle-spec-and-target)
 
+;;(define-key my-keys-minor-mode-map (kbd "C-w") 'kill-whole-line)
+
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
   t " my-keys" 'my-keys-minor-mode-map)
