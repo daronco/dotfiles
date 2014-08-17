@@ -5,7 +5,7 @@ Things to remember...
 
 # Ubuntu
 
-Current version: 13.10
+Current version: 14.04
 
 ## Basic
 
@@ -131,8 +131,8 @@ For our custom theme:
 sudo cp -r gnome-shell/Daronco /usr/share/themes/
 ```
 
+* Mediterranean: http://www.noobslab.com/2014/05/mediterranean-themes-updated-for-1404.html (originally was at http://gnome-look.org/content/show.php/MediterraneanNight+Series?content=156782, but the other link works better with newer Ubuntus)
 * Adwaita-x-dark: http://gnome-look.org/content/show.php?content=150905
-* Mediterranean: http://gnome-look.org/content/show.php/MediterraneanNight+Series?content=156782
 * Faience: http://gnome-look.org/content/show.php/Faience?content=144815
 
 
