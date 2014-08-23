@@ -7,28 +7,40 @@
   local = yellow
   remote = cyan
 [color "diff"]
-  meta = yellow
-  frag = magenta
+  meta = white
+  frag = cyan bold
+  func = magenta
+  plain = black bold
   old = red
   new = green
   whitespace = red reverse
 [color "status"]
   added = green
   changed = yellow
+  updated = yellow bold
   untracked = cyan
 [alias]
+  aliases = !git config --get-regexp '^alias\\..*' | cut -c 7- | sed 's/ / = /' | sort
+  s = status -sb
+  st = status
+  br = branch
+  ci = commit
+  co = checkout
+  l = log --oneline --decorate
   track = !sh -c 'git branch --track "$0" "origin/$0" && git checkout "$0"'
-  untracked = "!git ls-files --others --exclude-standard"
+  # untracked = "!git ls-files --others --exclude-standard"
   log-full = log --pretty=fuller --stat
-  log-one = log --pretty=one --stat
-  log-files = log --stat
+  # log-one = log --pretty=one --stat
+  # log-files = log --stat
+  # ll = log @{upstream}.. --oneline --decorate
+  # llog = log @{upstream}.. --decorate
 [user]
   name = Leonardo Crauss Daronco
   email = leonardodaronco@gmail.com
 [format]
   pretty = format:"%Cblue%H%Creset %Cgreen%s %Creset%n  %ad %m %ae"
 [merge]
-	tool = meld
-	verbosity = 3
+  tool = meld
+  verbosity = 3
 [core]
-	editor = vim
+  editor = vim
