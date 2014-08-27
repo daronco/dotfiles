@@ -10,7 +10,6 @@
   meta = white
   frag = cyan bold
   func = magenta
-  plain = black bold
   old = red
   new = green
   whitespace = red reverse
