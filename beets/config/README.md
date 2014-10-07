@@ -1,16 +1,16 @@
 Useful beet's commands
 ======================
 
-For albums I own:
-
-```bash
-beet modify owned=true artist:'Dave Matthews'
-```
-
 Import a new album:
 
 ```bash
 beet import /path/to/album
+```
+
+For albums I own:
+
+```bash
+beet modify owned=true artist:'Dave Matthews'
 ```
 
 Change album name:
@@ -31,6 +31,16 @@ Show "hidden" options when importing:
 # -t for timid
 beet import -t /path/to/file
 ```
+
+If files were moved to another place, re-import them all:
+
+```bash
+# will remove paths that don't exist anymore
+beet update
+# -W so tags aren't written, -A to not autotag
+beet import . -W -A
+```
+
 
 To do once in a while
 =====================

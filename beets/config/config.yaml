@@ -1,4 +1,4 @@
-directory: /media/leonardo/rocky/My/Music2/
+directory: /media/leonardo/tardigrade/My/Music2/
 library: ~/.config/beets/musiclibrary.blb
 import:
     move: yes
@@ -7,4 +7,6 @@ paths:
     default: $albumartist/$year $album/$track $title
     singleton: Non-Album/$artist/$title
     comp: Compilations/$year $album/$track $title
-plugins: fetchart lastgenre embedart missing
+plugins: fetchart lastgenre embedart missing duplicates
+fetchart:
+    google_search: true
