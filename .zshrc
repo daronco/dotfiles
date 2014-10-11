@@ -16,11 +16,16 @@ ZSH_THEME="daronco"
 ## 2 lines, very complete
 # ZSH_THEME="ys"
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+typeset -ga sources
+sources+=~/.aliases.zsh
+sources+=~/.functions.zsh
 
-# Functions
-[[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
+# try to include all sources
+for file in ${sources}; do
+    if [[ -a $file ]]; then
+      source $file
+    fi
+done
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
