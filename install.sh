@@ -54,7 +54,6 @@ if [[ $REPLY == [yY] ]]; then
   # bash, git, etc
   ln -sfv $PWD/.gitconfig ~/.gitconfig
   ln -sfv $PWD/.gemrc ~/.gemrc
-  ln -sfv $PWD/.bash_aliases ~/.bash_aliases
   ln -sfv $PWD/.bashrc ~/.bashrc
   ln -sfv $PWD/.profile ~/.profile
   ln -sfv $PWD/ssh_config ~/.ssh/config
@@ -68,6 +67,8 @@ if [[ $REPLY == [yY] ]]; then
   install_on_my_zsh
   install_on_my_zsh_plugins
   ln -sfv $PWD/.zshrc ~/.zshrc
+  ln -sfv $PWD/.aliases ~/.aliases
+  ln -sfv $PWD/.zsh_functions ~/.zsh_functions
   # zsh themes
   ln -sfv $PWD/zsh/themes $OHMYZSH_THEMES_DIR
 
