@@ -39,6 +39,7 @@ alias grep-rails='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc -
 alias git-contrib-full='git ls-tree -r HEAD|sed -re "s/^.{53}//"|while read filename; do file "$filename"; done|grep -E ": .*text"|sed -r -e "s/: .*//"|while read filename; do git blame -w "$filename"; done|sed -r -e "s/.*\((.*)[0-9]{4}-[0-9]{2}-[0-9]{2} .*/\1/" -e "s/ +$//"|sort|uniq -c'
 
 alias rm-logs='confirm && find . -name "*.log" -delete -print'
+alias rm-sass-cache='find . -name ".sass-cache" -type d -exec rm -vr {} +'
 
 # # aliases
 # [[ -f ~/.aliases ]] && source ~/.aliases
