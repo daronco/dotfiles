@@ -7,6 +7,12 @@ paths:
     default: $albumartist/$year $album/$track $title
     singleton: Non-Album/$artist/$title
     comp: Compilations/$year $album/$track $title
-plugins: fetchart lastgenre embedart missing duplicates
+plugins: fetchart lastgenre embedart missing duplicates convert
 fetchart:
     google_search: true
+convert:
+    command: ffmpeg -i $source -y -vn -aq 2 $dest
+    extension: mp3
+    dest: /media/leonardo/tardigrade/My/Music2/
+    auto: true
+    never_convert_lossy_files: true

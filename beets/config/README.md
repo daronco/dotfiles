@@ -11,6 +11,13 @@ For albums I own:
 
 ```bash
 beet modify owned=true artist:'Dave Matthews'
+beet ls owned:true
+```
+
+For new albums I should listen to:
+
+```bash
+beet modify mycat=new
 ```
 
 Change album name:
@@ -40,6 +47,21 @@ beet update
 # -W so tags aren't written, -A to not autotag
 beet import . -W -A
 ```
+
+Categories
+==========
+
+Names:
+
+* new
+* ...
+
+To list:
+
+```bash
+beet ls mycat:new
+```
+
 
 
 To do once in a while
