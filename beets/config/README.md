@@ -48,6 +48,22 @@ beet update
 beet import . -W -A
 ```
 
+Setting albums as soundtracks:
+
+```bash
+beet modify albumtype=soundtrack album:"Final Fantasy Tactics"
+# if it was a compilation before
+beet modify albumtype=soundtrack comp=0 album:"Final Fantasy Tactics"
+```
+
+List ID3 and manually set it on files:
+
+```bash
+mp3info XCOM\ -\ Enemy\ Unknown\ Soundtrack/1.mp3
+mp3info -a XCOM -l "Enemy Unknown Soundtrack" XCOM\ -\ Enemy\ Unknown\ Soundtrack/*.mp3
+```
+
+
 Categories
 ==========
 

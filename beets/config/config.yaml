@@ -4,9 +4,10 @@ import:
     move: yes
     log: ~/.config/beets/import.log
 paths:
-    default: $albumartist/$year $album/$track $title
+    default: Artists/$albumartist/$year $album%aunique{}/$track $title
+    albumtype:soundtrack: Soundtracks/$album/$track $title
     singleton: Non-Album/$artist/$title
-    comp: Compilations/$year $album/$track $title
+    comp: Compilations/$year $album%aunique{}/$track $title
 plugins: fetchart lastgenre embedart missing duplicates convert
 fetchart:
     google_search: true
