@@ -16,3 +16,6 @@ alias git-contrib-full='git ls-tree -r HEAD|sed -re "s/^.{53}//"|while read file
 
 alias rm-logs='confirm && find . -name "*.log" -delete -print'
 alias rm-sass-cache='find . -name ".sass-cache" -type d -exec rm -vr {} +'
+
+alias va='vagrant'
+alias vag='vagrant'
