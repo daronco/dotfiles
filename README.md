@@ -9,3 +9,7 @@ Clone it somewhere and:
 # Setting up a new machine?
 
 See [setup.md](https://github.com/daronco/terminal-stuff/blob/master/setup.md).
+
+# TODO:
+
+* https://github.com/holman/dotfiles
