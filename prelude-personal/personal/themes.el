@@ -5,7 +5,7 @@
 ;; Zenburn is loaded by default by Prelude.
 ;; We use a slightly modified Zenburn:
 (load-theme 'zzenburn t)
-
+;;(load-theme 'tomorrow-night-eighties t)
 
 ;; The block below was used in the past to customize Zenburn. Works, but makes it
 ;; less refined than the default theme (a few elements will have weird colors).
