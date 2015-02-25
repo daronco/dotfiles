@@ -22,3 +22,5 @@ alias rm-sass-cache='find . -name ".sass-cache" -type d -exec rm -vr {} +'
 
 alias va='vagrant'
 alias vag='vagrant'
+
+alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo lxc-stop -n $m ; done'
