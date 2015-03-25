@@ -51,7 +51,9 @@ export PATH=$PATH:/home/leonardo/.nvm/v0.8.9/bin:/home/leonardo/.rbenv/shims:/ho
 export TERM='xterm-256color'
 
 # NVM
-source ~/.nvm/nvm.sh
+if [[ -f .source_me && -r .source_me ]]; then
+  source ~/.nvm/nvm.sh
+fi
 
 # For history-substring-search
 # Bind UP and DOWN arrow keys
