@@ -37,3 +37,16 @@ confirm () {
             ;;
     esac
 }
+
+twitch () {
+    if [[ $# -eq 2 ]]; then
+        livestreamer twitch.tv/$1 $2
+    else
+        livestreamer twitch.tv/$1 best
+    fi
+}
+
+twitch-pos () {
+    wmctrl -r "VLC" -e 0,1120,550,800,500
+    wmctrl -r "VLC" -b add,sticky
+}
