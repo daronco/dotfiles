@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+export DEBIAN_FRONTEND=noninteractive
+
+# default packages
+apt-get update > /dev/null
+apt-get -y install vim zsh git emacs24
+
+# my dotfiles
+su -c "cd /home/vagrant/.dotfiles && ./install.sh -y" vagrant
+
+# zsh as the default shell
+chsh -s /usr/bin/zsh vagrant

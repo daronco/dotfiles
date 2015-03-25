@@ -22,6 +22,7 @@ echo "          ~/.profile"
 echo "          ~/.emacs"
 echo "          ~/.emacs.d/"
 echo "          ~/.config/beets"
+echo "          ~/.vagrant.d/scripts/"
 echo "-------------------------------------------------------------------------"
 echo
 
@@ -71,6 +72,13 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/.functions.zsh ~/.functions.zsh
   # zsh themes
   ln -sfv $PWD/zsh/themes $OHMYZSH_THEMES_DIR
+
+  # vagrant
+  mkdir -p ~/.vagrant.d/
+  rm -rf ~/.vagrant.d/scripts
+  rm -rf ~/.vagrant.d/Vagrantfile
+  ln -sfv $PWD/vagrant/scripts ~/.vagrant.d/scripts
+  ln -sfv $PWD/vagrant/Vagrantfile ~/.vagrant.d/Vagrantfile
 
   # beets
   sudo apt-get install python-pip
