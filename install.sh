@@ -86,4 +86,7 @@ if [[ $REPLY == [yY] ]]; then
   mkdir -p ~/.config
   ln -sfv $PWD/beets/config ~/.config/beets
 
+  # a few other stuff
+  sudo pip install livestreamer
+
 fi
