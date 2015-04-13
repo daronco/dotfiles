@@ -51,7 +51,7 @@ export PATH=$PATH:/home/leonardo/.nvm/v0.8.9/bin:/home/leonardo/.rbenv/shims:/ho
 export TERM='xterm-256color'
 
 # NVM
-if [[ -f .source_me && -r .source_me ]]; then
+if [[ -f ~/.nvm/nvm.sh && -r ~/.nvm/nvm.sh ]]; then
   source ~/.nvm/nvm.sh
 fi
 
