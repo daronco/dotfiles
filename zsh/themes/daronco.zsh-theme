@@ -23,7 +23,10 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="$GIT_UNTRACKED_COLOR ?"
 ZSH_THEME_GIT_PROMPT_CLEAN="$GIT_CLEAN_COLOR ●"
 
 # hour
-TIME="$BRACKET_COLOR$TIMECOLOR%T$BRACKET_COLOR%{$reset_color%}"
+# TIME="$BRACKET_COLOR$TIMECOLOR%T$BRACKET_COLOR%{$reset_color%}"
+time_enabled="%(?.%{$fg[green]%}.%{$fg_bold[red]%})%*%{$reset_color%}"
+# time_disabled="%{$fg[green]%}%*%{$reset_color%}"
+TIME=$time_enabled
 
 # rvm/rbenv
 if [ -e ~/.rvm/bin/rvm-prompt ]; then
@@ -41,8 +44,9 @@ DIR="$DIRCOLOR%~\$(git_prompt_info)"
 # DIR="$DIRCOLOR%~"
 
 # user name
-if [ $UID -eq 0 ]; then NCOLOR="%{$fg_bold[magenta]%}"; else NCOLOR="%{$fg[cyan]%}"; fi
+if [ $UID -eq 0 ]; then NCOLOR="%{$fg_bold[magenta]%}"; else NCOLOR="%{$fg[yellow]%}"; fi
 USER='$NCOLOR%n%{$reset_color%}'
+MYHOST="%{$fg[yellow]%}%m%{$reset_color%}"
 
 # arrow at the end
 # LIMITER="$TIMECOLOR➜%{$reset_color%}"
@@ -53,4 +57,24 @@ else
 fi
 
 # put it all together
-PROMPT="$USER@$TIME $DIR $LIMITER %{$reset_color%}"
+# PROMPT="$USER@$TIME $DIR $LIMITER %{$reset_color%}"
+
+PROMPT="$TIME $USER@$MYHOST $DIR $LIMITER %{$reset_color%}"
+
+# elaborate exitcode on the right when >0
+return_code_enabled="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+return_code_disabled=
+return_code=$return_code_enabled
+RPS1='${return_code}'
+function accept-line-or-clear-warning () {
+        if [[ -z $BUFFER ]]; then
+                time=$time_disabled
+                return_code=$return_code_disabled
+        else
+                time=$time_enabled
+                return_code=$return_code_enabled
+        fi
+        zle accept-line
+}
+zle -N accept-line-or-clear-warning
+bindkey '^M' accept-line-or-clear-warning
