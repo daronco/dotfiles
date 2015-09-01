@@ -7,6 +7,8 @@
 BRACKET_COLOR="%{$fg[white]%}"
 TIME_COLOR="%{$fg[white]%}"
 DIRCOLOR="%{$fg[cyan]%}"
+USERCOLOR="%{$fg[cyan]%}"
+HOSTCOLOR="%{$fg[cyan]%}"
 GIT_BRANCH_COLOR="%{$fg[green]%}"
 GIT_CLEAN_COLOR="%{$fg_bold[green]%}"
 GIT_DIRTY_COLOR="%{$fg_bold[red]%}"
@@ -24,9 +26,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="$GIT_CLEAN_COLOR ●"
 
 # hour
 # TIME="$BRACKET_COLOR$TIMECOLOR%T$BRACKET_COLOR%{$reset_color%}"
-time_enabled="%(?.%{$fg[green]%}.%{$fg_bold[red]%})%*%{$reset_color%}"
-# time_disabled="%{$fg[green]%}%*%{$reset_color%}"
-TIME=$time_enabled
+TIME="%(?.%{$fg[green]%}.%{$fg_bold[red]%})%*%{$reset_color%}"
 
 # rvm/rbenv
 if [ -e ~/.rvm/bin/rvm-prompt ]; then
@@ -44,9 +44,9 @@ DIR="$DIRCOLOR%~\$(git_prompt_info)"
 # DIR="$DIRCOLOR%~"
 
 # user name
-if [ $UID -eq 0 ]; then NCOLOR="%{$fg_bold[magenta]%}"; else NCOLOR="%{$fg[yellow]%}"; fi
+if [ $UID -eq 0 ]; then NCOLOR="%{$fg_bold[magenta]%}"; else NCOLOR=$USERCOLOR; fi
 USER='$NCOLOR%n%{$reset_color%}'
-MYHOST="%{$fg[yellow]%}%m%{$reset_color%}"
+MYHOST="$HOSTCOLOR%m%{$reset_color%}"
 
 # arrow at the end
 # LIMITER="$TIMECOLOR➜%{$reset_color%}"
@@ -62,7 +62,7 @@ fi
 PROMPT="$TIME $USER@$MYHOST $DIR $LIMITER %{$reset_color%}"
 
 # elaborate exitcode on the right when >0
-return_code_enabled="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+return_code_enabled="%(?..%{$fg_bold[red]%}%? ↵%{$reset_color%})"
 return_code_disabled=
 return_code=$return_code_enabled
 RPS1='${return_code}'
