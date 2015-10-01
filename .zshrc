@@ -73,3 +73,7 @@ eval "alias bi='bundle install'" # --jobs=$cores_num'"
 
 # Project paths for the plugin pj
 PROJECT_PATHS=(~/Dev/mconf ~/Dev/daronco ~/Dev/bigbluebutton)
+
+# For Go
+export GOPATH=$HOME/Dev/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
