@@ -18,3 +18,7 @@
 (add-hook 'el-mode-hook 'turn-on-fic-mode)
 (add-hook 'jade-mode-hook 'turn-on-fic-mode)
 (font-lock-fontify-buffer)
+
+;;; Rainbow mode for colors
+(add-hook 'css-mode-hook 'rainbow-mode)
+(add-hook 'scss-mode-hook 'rainbow-mode)
