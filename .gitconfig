@@ -4,8 +4,8 @@
   ui = always
 [color "branch"]
   current = green
-  local = yellow
-  remote = cyan
+  local = cyan
+  remote = yellow
 [color "diff"]
   meta = white
   frag = cyan bold
@@ -16,8 +16,8 @@
 [color "status"]
   added = green
   changed = yellow
-  updated = yellow bold
-  untracked = cyan
+  updated = green
+  untracked = red
 [alias]
   aliases = !git config --get-regexp '^alias\\..*' | cut -c 7- | sed 's/ / = /' | sort
   s = status -sb
@@ -25,19 +25,26 @@
   br = branch
   ci = commit
   co = checkout
-  l = log --oneline --decorate
+  l = log --pretty=custom
+  ll = log @{upstream}.. --oneline --pretty=custom
+  lf = log --pretty=fuller --stat
   track = !sh -c 'git branch --track "$0" "origin/$0" && git checkout "$0"'
   # untracked = "!git ls-files --others --exclude-standard"
-  log-full = log --pretty=fuller --stat
   # log-one = log --pretty=one --stat
   # log-files = log --stat
-  # ll = log @{upstream}.. --oneline --decorate
   # llog = log @{upstream}.. --decorate
 [user]
   name = Leonardo Crauss Daronco
   email = leonardodaronco@gmail.com
 [format]
   pretty = format:"%Cblue%H%Creset %Cgreen%s %Creset%n  %ad %m %ae"
+[pretty]
+    custom = "%C(magenta)%h%C(cyan)%d %C(yellow)%ar %C(white)%s %C(yellow)(%an)"
+    #                     │        │            │            │             └─ author name
+    #                     │        │            │            └─ message
+    #                     │        │            └─ date (relative)
+    #                     │        └─ decorations (branch, heads or tags)
+    #                     └─ hash (abbreviated)
 [merge]
   tool = meld
   verbosity = 3
