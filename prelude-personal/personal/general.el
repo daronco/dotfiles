@@ -73,6 +73,11 @@
 ; Always use whole-line-or-region to be able to C-w lines or regions
 (whole-line-or-region-mode 1)
 
+; Disable checkdoc for lisp files
+(with-eval-after-load 'flycheck
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+
+
 ; TODO: markdown mode sucks right now, page down and up are mapped to other things
 ;       tried THOUSANDS of commands to unset the mapping of "M-[" (because page down
 ;       and up are interpreted as "M-[ ~ 6" and "M-[ ~ 5") but didn't work.

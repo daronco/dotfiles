@@ -164,7 +164,7 @@ Preferences:
 
 * Startup Applications: Add an entry `yakuake`
 * Edit Current Profile -> General -> Command: `/bin/zsh`
-* Edit Current Profile -> Appearance -> Color scheme: `zzenburn`
+* Edit Current Profile -> Appearance -> Color scheme: `Solarized-daronco`
 * Edit Current Profile -> Scrolling -> Fixed size scrollback: 50000 lines
 * Configure Yakuake -> Tab Bar: Show title bar contents in tab labels
 * Configure Yakuake -> Size and Animation: whatever...
