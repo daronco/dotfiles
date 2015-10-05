@@ -27,6 +27,7 @@
  '(which-func ((t (:foreground "brightblack" :weight bold))))
  '(mode-line ((t (:background "yellow" :foreground "black" :inverse-video nil))))
  '(mode-line-inactive ((t (:inverse-video nil))))
+ '(region ((t (:background "cyan" :foreground "brightblack" :inverse-video nil))))
  )
 
 
