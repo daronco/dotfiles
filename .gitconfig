@@ -39,18 +39,18 @@
 [format]
   pretty = format:"%Cblue%H%Creset %Cgreen%s %Creset%n  %ad %m %ae"
 [pretty]
-  custom = "%C(red)%h %C(white)-%C(cyan)%d %C(white)%s %C(green)(%ar) %C(cyan)<%an>"
-  #                  │                   │           │            │             └─ author name
-  #                  │                   │           │            └─ date (relative)
-  #                  │                   │           └─ message
-  #                  │                   └─ decorations (branch, heads or tags)
-  #                  └─ hash (abbreviated)
+  custom = "%C(red)%H %C(white)-%C(cyan)%d %C(white)%s %C(green)(%ar) %C(cyan)<%an>"
+  #                 │                   │           │            │             └─ author name
+  #                 │                   │           │            └─ date (relative)
+  #                 │                   │           └─ message
+  #                 │                   └─ decorations (branch, heads or tags)
+  #                 └─ hash (abbreviated)
   custom2 = "%C(magenta)%h%C(cyan)%d %C(yellow)%ar %C(white)%s %C(yellow)(%an)"
-  #                     │        │            │            │             └─ author name
-  #                     │        │            │            └─ message
-  #                     │        │            └─ date (relative)
-  #                     │        └─ decorations (branch, heads or tags)
-  #                     └─ hash (abbreviated)
+  #                      │        │            │            │             └─ author name
+  #                      │        │            │            └─ message
+  #                      │        │            └─ date (relative)
+  #                      │        └─ decorations (branch, heads or tags)
+  #                      └─ hash (abbreviated)
 [merge]
   tool = meld
   verbosity = 3
