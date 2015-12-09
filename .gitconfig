@@ -29,6 +29,8 @@
   ll = log @{upstream}.. --oneline --pretty=custom
   lf = log --pretty=fuller --stat
   track = !sh -c 'git branch --track "$0" "origin/$0" && git checkout "$0"'
+  pick = cherry-pick
+  c-p = cherry-pick
   # untracked = "!git ls-files --others --exclude-standard"
   # log-one = log --pretty=one --stat
   # log-files = log --stat
