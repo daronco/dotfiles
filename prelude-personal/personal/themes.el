@@ -29,8 +29,8 @@
  '(mode-line ((t (:background "yellow" :foreground "black" :inverse-video nil))))
  '(mode-line-inactive ((t (:inverse-video nil))))
  '(region ((t (:background "orange" :foreground "brightblack" :inverse-video nil))))
+ '(flycheck-error ((t (:inherit nil :foreground "red"))))
  )
-
 
 ;; To use a slightly modified Zenburn:
 ;; (load-theme 'zzenburn t)
