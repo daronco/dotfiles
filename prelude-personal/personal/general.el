@@ -26,8 +26,9 @@
 (add-hook 'python-mode-hook             ; 2-space indent in python
           '(lambda ()
              (setq python-indent 2)))
-(setq js-indent-level 2)                ; 2-space indent for javascript
-(setq css-indent-offset 2)              ; 2-space in css/scss
+(setq js-indent-level 2)                     ; 2-space indent for javascript
+(custom-set-variables '(js2-basic-offset 2)) ; 2-space indent for javascript with js2
+(setq css-indent-offset 2)                   ; 2-space in css/scss
 
 ; Always show whitespaces
 (global-whitespace-mode 1) ; TODO: it's working but whitespaces aren't being shown
