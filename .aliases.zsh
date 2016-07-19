@@ -7,7 +7,7 @@ alias ekill='emacsclient -e "(kill-emacs)"'
 
 # Greps
 alias grep='grep --exclude="*~" --color=auto'
-alias grep-js='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=node_modules --exclude-dir=doc --exclude-dir=tmp --exclude-dir=public --exclude-dir=log --exclude-dir=tmp --exclude-dir=builtAssets --exclude="*.log"'
+alias grep-js='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=node_modules --exclude-dir=doc --exclude-dir=tmp --exclude-dir=public --exclude-dir=.meteor --exclude-dir=log --exclude-dir=tmp --exclude-dir=builtAssets --exclude="*.log"'
 alias grep-rails='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc --exclude-dir=rdoc --exclude-dir=log --exclude-dir=tmp --exclude-dir=public --exclude-dir=extras --exclude-dir=vendor --exclude="*.log" --exclude-dir=coverage --exclude-dir=pkg --exclude-dir=_other --exclude-dir=_tmp --exclude-dir=.sass-cache'
 
 # Prints the number of lines in the current git repository contributed by each of the contributors
@@ -22,5 +22,8 @@ alias rm-sass-cache='find . -name ".sass-cache" -type d -exec rm -vr {} +'
 
 alias va='vagrant'
 alias vag='vagrant'
+
+alias dc='sudo docker-compose'
+alias docker-rmi='sudo docker rmi -f $(sudo docker images | grep "^<none>" | sed "s/\([^ ]*[ ]*\)\([^ ]*[ ]*\)\([^ ]*\).*/\3/g")'
 
 alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo lxc-stop -n $m ; done'
