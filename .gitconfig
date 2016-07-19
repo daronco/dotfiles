@@ -20,17 +20,19 @@
   untracked = red
 [alias]
   aliases = !git config --get-regexp '^alias\\..*' | cut -c 7- | sed 's/ / = /' | sort
-  s = status -sb
-  st = status
+  br-clean = !git branch --merged master | grep -v 'master$' | xargs git branch -d
+  # bf = !sh -c 'for branch in `git branch | grep -v HEAD`; do echo -e `git show --format="%ci %an" $branch | head -n 1` \\t$branch; done | sort -r'
   br = branch
   ci = commit
   co = checkout
-  l = log --pretty=custom
-  ll = log @{upstream}.. --oneline --pretty=custom
-  lf = log --pretty=fuller --stat
-  track = !sh -c 'git branch --track "$0" "origin/$0" && git checkout "$0"'
-  pick = cherry-pick
   c-p = cherry-pick
+  lf = log --pretty=fuller --stat
+  ll = log @{upstream}.. --oneline --pretty=custom
+  l = log --pretty=custom
+  pick = cherry-pick
+  s = status -sb
+  st = status
+  track = !sh -c 'git branch --track "$0" "origin/$0" && git checkout "$0"'
   # untracked = "!git ls-files --others --exclude-standard"
   # log-one = log --pretty=one --stat
   # log-files = log --stat

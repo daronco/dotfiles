@@ -27,3 +27,7 @@ alias dc='sudo docker-compose'
 alias docker-rmi='sudo docker rmi -f $(sudo docker images | grep "^<none>" | sed "s/\([^ ]*[ ]*\)\([^ ]*[ ]*\)\([^ ]*\).*/\3/g")'
 
 alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo lxc-stop -n $m ; done'
+
+rdoc2md() {
+  ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
+}

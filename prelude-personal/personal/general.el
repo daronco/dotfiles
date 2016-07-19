@@ -31,10 +31,12 @@
 (setq css-indent-offset 2)                   ; 2-space in css/scss
 
 ; Always show whitespaces
-(global-whitespace-mode 1) ; TODO: it's working but whitespaces aren't being shown
+;; (global-whitespace-mode 1) ; TODO: it's working but whitespaces aren't being shown
 
 ; Default line-length to 100 chars
-(setq whitespace-line-column 100)
+(custom-set-variables
+ '(global-whitespace-mode 1)
+ '(whitespace-line-column 100))
 
 ; Turn xclip on (requires system package xclip installed!)
 (if (boundp 'xclip-mode)
@@ -74,9 +76,9 @@
 ; Always use whole-line-or-region to be able to C-w lines or regions
 (whole-line-or-region-mode 1)
 
-; Disable checkdoc for lisp files
-(with-eval-after-load 'flycheck
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+;; Disable "Pinging..." on CTRL+x+f over a domain name
+(custom-set-variables
+ '(ffap-machine-p-known (quote reject)))
 
 
 ; TODO: markdown mode sucks right now, page down and up are mapped to other things
