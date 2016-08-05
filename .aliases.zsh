@@ -23,8 +23,10 @@ alias rm-sass-cache='find . -name ".sass-cache" -type d -exec rm -vr {} +'
 alias va='vagrant'
 alias vag='vagrant'
 
-alias dc='sudo docker-compose'
-alias docker-rmi='sudo docker rmi -f $(sudo docker images | grep "^<none>" | sed "s/\([^ ]*[ ]*\)\([^ ]*[ ]*\)\([^ ]*\).*/\3/g")'
+alias doc='sudo docker-compose'
+alias docr='sudo docker-compose run'
+alias docup='sudo docker-compose up'
+alias docker-rm-all='sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)'
 
 alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo lxc-stop -n $m ; done'
 
