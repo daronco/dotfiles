@@ -6,14 +6,25 @@ import:
 paths:
     default: Artists/$albumartist/$year $album%aunique{}/$track $title
     albumtype:soundtrack: Soundtracks/$album/$track $title
+    albumtype:tuntch: Tuntch/$artist - $title
     singleton: Non-Album/$artist/$title
     comp: Compilations/$year $album%aunique{}/$track $title
-plugins: fetchart lastgenre embedart missing duplicates convert
+plugins: fetchart lastgenre embedart missing duplicates convert lastimport smartplaylist play fromfilename
 fetchart:
     google_search: true
+    compare_threshold: 20
 convert:
     command: ffmpeg -i $source -y -vn -aq 2 $dest
     extension: mp3
     dest: /media/leonardo/tardigrade/My/Music2/
     auto: true
     never_convert_lossy_files: true
+lastfm:
+    user: leonardodaronco
+play:
+    command: cmus-remote -c -P
+smartplaylist:
+    playlist_dir: /media/leonardo/tardigrade/My/Music2/
+    playlists:
+        - name: most-played.m3u
+          query: 'play_count:120..'

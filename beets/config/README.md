@@ -1,5 +1,14 @@
+Install
+
+```
+sudo pip install beets
+sudo pip install requests # for FetchArt plugin and others
+sudo aptitude install imagemagick # for FetchArt#compare_threshold
+```
+
 Useful beet's commands
 ======================
+
 
 Import a new album:
 
