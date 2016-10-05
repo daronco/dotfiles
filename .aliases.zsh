@@ -33,3 +33,9 @@ alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo l
 rdoc2md() {
   ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
 }
+
+alias bu='bundle update --source'
+
+tw() {
+  livestreamer twitch.tv/$1 "${2:-high}" --ringbuffer-size 100M --hls-live-edge 12 -l ${3:-info}
+}
