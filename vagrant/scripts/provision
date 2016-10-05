@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # default packages
 apt-get update > /dev/null
-apt-get -y install vim zsh git emacs24
+apt-get -y install vim zsh git emacs24 python-pip
 
 # my dotfiles
 su -c "cd /home/vagrant/.dotfiles && ./install.sh -y" vagrant
