@@ -10,33 +10,37 @@
 ; pick a face and edit it
 ; a custom.el will be saved with the custom colors
 
-;; This theme comes from the package color-theme-solarized that's at:
-;; https://github.com/sellout/emacs-color-theme-solarized
-(load-theme 'solarized t)
-; Use the dark Solarized theme both in terminal and GUI
-(custom-set-variables
- '(frame-background-mode (quote dark)))
+(load-theme 'material t)
 
-; Customizations for Solarized
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background "base03"))))
- '(linum ((t (:background "base03" :foreground "brightgreen"))))
- '(which-func ((t (:foreground "brightblack" :weight bold))))
- '(mode-line ((t (:background "yellow" :foreground "black" :inverse-video nil))))
- '(mode-line-inactive ((t (:inverse-video nil))))
- '(region ((t (:background "orange" :foreground "brightblack" :inverse-video nil))))
- '(flycheck-error ((t (:inherit nil :foreground "red"))))
- )
+;;;;
+;;;; SOLARIZED
+;;;;
+;; ;; This theme comes from the package color-theme-solarized that's at:
+;; ;; https://github.com/sellout/emacs-color-theme-solarized
+;; (load-theme 'solarized t)
+;; ; Use the dark Solarized theme both in terminal and GUI
+;; (custom-set-variables
+;;  '(frame-background-mode (quote dark)))
+;; ; Customizations for Solarized
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(default ((t (:background "base03"))))
+;;  '(linum ((t (:background "base03" :foreground "brightgreen"))))
+;;  '(which-func ((t (:foreground "brightblack" :weight bold))))
+;;  '(mode-line ((t (:background "yellow" :foreground "black" :inverse-video nil))))
+;;  '(mode-line-inactive ((t (:inverse-video nil))))
+;;  '(region ((t (:background "orange" :foreground "brightblack" :inverse-video nil))))
+;;  '(flycheck-error ((t (:inherit nil :foreground "red"))))
+;;  )
 
 ;; To use a slightly modified Zenburn:
 ;; (load-theme 'zzenburn t)
 
 ;; Another good one
-;;(load-theme 'tomorrow-night-eighties t)
+;; (load-theme 'tomorrow-night-eighties t)
 
 ;; The block below was used in the past to customize Zenburn. Works, but makes it
 ;; less refined than the default theme (a few elements will have weird colors).
