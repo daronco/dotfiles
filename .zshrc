@@ -77,3 +77,6 @@ PROJECT_PATHS=(~/Dev/mconf ~/Dev/daronco ~/Dev/bigbluebutton)
 # Golang
 export GOPATH=$HOME/Dev/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+# Automatically open tmux
+# [ -z "$TMUX" ] && command -v tmux > /dev/null && TERM=xterm-256color && exec tmux
