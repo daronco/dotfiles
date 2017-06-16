@@ -11,6 +11,13 @@
 ; a custom.el will be saved with the custom colors
 
 (load-theme 'material t)
+(custom-set-faces
+ '(default ((t (:background "base03"))))
+ '(linum ((t (:background "base03" :foreground "brightgreen"))))
+ '(region ((t (:background "#121212" :inverse-video nil))))
+ '(hl-line ((t (:background "black"))))
+ '(flycheck-error ((t (:inherit nil :foreground "red"))))
+)
 
 ;;;;
 ;;;; SOLARIZED
