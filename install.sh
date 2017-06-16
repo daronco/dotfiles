@@ -24,6 +24,7 @@ echo "          ~/.emacs.d/"
 echo "          ~/.config/beets"
 echo "          ~/.vagrant.d/scripts/"
 echo "          ~/.tmux.conf"
+echo "          ~/.gconf/apps/guake/"
 echo "-------------------------------------------------------------------------"
 echo
 
@@ -53,6 +54,12 @@ install_on_my_zsh_plugins () {
 
 
 if [[ $REPLY == [yY] ]]; then
+
+  # default packages
+  sudo pip install --upgrade pip
+  sudo pip install --upgrade livestreamer
+  sudo apt-get install -y wget curl guake
+
   # bash, git, etc
   ln -sfv $PWD/.gitconfig ~/.gitconfig
   ln -sfv $PWD/.gemrc ~/.gemrc
@@ -87,11 +94,12 @@ if [[ $REPLY == [yY] ]]; then
   mkdir -p ~/.config
   ln -sfv $PWD/beets/config ~/.config/beets
 
-  # other stuff
-  sudo pip install --upgrade pip
-  sudo pip install --upgrade livestreamer
-
   # tmux
   ln -sfv $PWD/.tmux.conf ~/.tmux.conf
+
+  # guake
+  mkdir ~/.gconf/apps/
+  rm -rf ~/.gconf/apps/guake
+  ln -sfv $PWD/guake/gconf ~/.gconf/apps/guake
 
 fi

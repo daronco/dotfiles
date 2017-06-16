@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="move_tab_right" mtime="1497129529" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;Right</stringvalue>
+	</entry>
+	<entry name="move_tab_left" mtime="1497129528" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;Left</stringvalue>
+	</entry>
+	<entry name="decrease_height" mtime="1497129233" type="string">
+		<stringvalue>&lt;Shift&gt;&lt;Alt&gt;Up</stringvalue>
+	</entry>
+	<entry name="increase_height" mtime="1497129231" type="string">
+		<stringvalue>&lt;Shift&gt;&lt;Alt&gt;Down</stringvalue>
+	</entry>
+	<entry name="close_tab" mtime="1497128039" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;w</stringvalue>
+	</entry>
+	<entry name="next_tab" mtime="1497118090" type="string">
+		<stringvalue>&lt;Shift&gt;Right</stringvalue>
+	</entry>
+	<entry name="previous_tab" mtime="1497118087" type="string">
+		<stringvalue>&lt;Shift&gt;Left</stringvalue>
+	</entry>
+</gconf>
