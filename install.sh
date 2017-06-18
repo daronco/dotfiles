@@ -52,6 +52,10 @@ install_on_my_zsh_plugins () {
     git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $OHMYZSH_PLUGINS_DIR/zsh-syntax-highlighting
 }
 
+install_tmux_plugins () {
+    rm -rf $PWD/tmux/tmux-yank
+    git clone https://github.com/tmux-plugins/tmux-yank.git $PWD/tmux/tmux-yank
+}
 
 if [[ $REPLY == [yY] ]]; then
 
@@ -95,6 +99,7 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/beets/config ~/.config/beets
 
   # tmux
+  install_tmux_plugins
   ln -sfv $PWD/.tmux.conf ~/.tmux.conf
 
   # guake

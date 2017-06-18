@@ -5,7 +5,7 @@
   '(flymake-ruby flymake-cursor flymake-css flymake-sass
     flymake-haml flymake-coffee flymake-python-pyflakes
     jade-mode xclip rspec-mode multiple-cursors smart-mode-line
-    less-css-mode coffee-mode whole-line-or-region
+    less-css-mode coffee-mode whole-line-or-region ansible
     color-theme-solarized material-theme)
   "A list of packages to ensure are installed at launch.")
 
