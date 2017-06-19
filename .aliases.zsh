@@ -31,7 +31,11 @@ alias docker-rm-all='sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(
 alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo lxc-stop -n $m ; done'
 
 rdoc2md() {
-  ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
+    ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
+}
+
+genhash() {
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 }
 
 alias bu='bundle update --source'
