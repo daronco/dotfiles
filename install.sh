@@ -107,4 +107,7 @@ if [[ $REPLY == [yY] ]]; then
   rm -rf ~/.gconf/apps/guake
   ln -sfv $PWD/guake/gconf ~/.gconf/apps/guake
 
+  # spacemacs
+  ln -sfv $PWD/.spacemacs ~/.spacemacs
+
 fi
