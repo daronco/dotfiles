@@ -34,10 +34,16 @@ else
     read -p "Proceed (y/N)?"
 fi
 
-PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
-install_prelude () {
-  rm -rf $PRELUDE_INSTALL_DIR
-  curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+# PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
+# install_prelude () {
+#   rm -rf $PRELUDE_INSTALL_DIR
+#   curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+# }
+
+SPACEMACS_INSTALL_DIR="$HOME/.emacs.d"
+install_spacemacs () {
+    rm -rf $SPACEMACS_INSTALL_DIR
+    git clone https://github.com/syl20bnr/spacemacs $SPACEMACS_INSTALL_DIR
 }
 
 OHMYZSH_INSTALL_DIR="$HOME/.oh-my-zsh"
@@ -72,9 +78,11 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/ssh_config ~/.ssh/config
 
   # emacs
-  install_prelude
-  rm -rf ~/.emacs.d/personal && ln -sfv $PWD/prelude-personal/personal ~/.emacs.d/personal
-  rm -rf ~/.emacs.d/themes && ln -sfv $PWD/prelude-personal/themes ~/.emacs.d/themes
+  # install_prelude
+  # rm -rf ~/.emacs.d/personal && ln -sfv $PWD/prelude-personal/personal ~/.emacs.d/personal
+  # rm -rf ~/.emacs.d/themes && ln -sfv $PWD/prelude-personal/themes ~/.emacs.d/themes
+  install_spacemacs
+  ln -sfv $PWD/.spacemacs ~/.spacemacs
 
   # zsh
   install_on_my_zsh
@@ -106,8 +114,5 @@ if [[ $REPLY == [yY] ]]; then
   mkdir ~/.gconf/apps/
   rm -rf ~/.gconf/apps/guake
   ln -sfv $PWD/guake/gconf ~/.gconf/apps/guake
-
-  # spacemacs
-  ln -sfv $PWD/.spacemacs ~/.spacemacs
 
 fi
