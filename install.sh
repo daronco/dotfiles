@@ -1,5 +1,7 @@
 #!/bin/bash
 
+APT_PACKAGES='wget curl guake rbenv zsh emacs vagrant aptitude lxc xclip tmux meld'
+
 #   ./install.sh
 #   ./install.sh [--yes|-y]
 
@@ -66,9 +68,9 @@ install_tmux_plugins () {
 if [[ $REPLY == [yY] ]]; then
 
   # default packages
+  sudo apt-get install -y $APT_PACKAGES
   sudo pip install --upgrade pip
   sudo pip install --upgrade livestreamer
-  sudo apt-get install -y wget curl guake
 
   # bash, git, etc
   ln -sfv $PWD/.gitconfig ~/.gitconfig
@@ -101,7 +103,7 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/vagrant/Vagrantfile ~/.vagrant.d/Vagrantfile
 
   # beets
-  sudo apt-get install python-pip
+  sudo apt-get install -y python-pip
   rm -rf ~/.config/beets
   mkdir -p ~/.config
   ln -sfv $PWD/beets/config ~/.config/beets
