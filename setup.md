@@ -18,7 +18,7 @@ sudo apt-get install build-essential curl aptitude yakuake gnome-shell zsh git g
 2nd pass:
 
 ```bash
-sudo apt-get install vlc lm-sensors gnome-tweak-tool meld vim gimp libgeoip-dev
+sudo apt-get install vlc lm-sensors gnome-tweak-tool meld vim gimp libgeoip-dev lm-sensors
 ```
 
 SSH keys:
