@@ -36,6 +36,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     go
      csv
      elixir
      nginx
@@ -345,7 +346,20 @@ you should place your code here."
   (setq web-mode-css-indent-offset n) ; web-mode, css in html file
   (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
   (setq css-indent-offset n) ; css-mode
+  (setq go-mode-tab-width n)
+  (setq indent-tabs-mode 1)
+  (setq default-tab-width n)
+  (setq standard-indent n)
   )
+
+(global-set-key (kbd "M-p") 'ace-window)
+
+(add-hook 'go-mode-hook
+          (lambda ()
+            (setq-default)
+            (setq tab-width 4)
+            (setq standard-indent 4)
+            (setq indent-tabs-mode nil)))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
