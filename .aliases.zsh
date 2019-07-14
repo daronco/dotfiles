@@ -9,7 +9,7 @@ alias ekill='emacsclient -e "(kill-emacs)"'
 alias grep='grep --exclude="*~" --color=auto'
 alias grep-js='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=node_modules --exclude-dir=doc --exclude-dir=tmp --exclude-dir=public --exclude-dir=.meteor --exclude-dir=log --exclude-dir=tmp --exclude-dir=builtAssets --exclude="*.log"'
 alias grep-rails='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc --exclude-dir=rdoc --exclude-dir=log --exclude-dir=tmp --exclude-dir=public --exclude-dir=extras --exclude-dir=vendor --exclude="*.log" --exclude-dir=coverage --exclude-dir=pkg --exclude-dir=_other --exclude-dir=_tmp --exclude-dir=.sass-cache'
-alias grepr='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc --exclude-dir=rdoc --exclude-dir=node_modules --exclude-dir=tmp --exclude-dir=public --exclude-dir=.meteor --exclude-dir=log --exclude-dir=tmp --exclude-dir=builtAssets --exclude-dir=extras --exclude-dir=vendor --exclude-dir=coverage  --exclude="*.log" --exclude-dir=pkg --exclude-dir=_other --exclude-dir=_tmp --exclude-dir=.sass-cache --exclude-dir=venv --exclude-dir=.venv --exclude-dir=__pycache__ -r'
+alias grepr='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc --exclude-dir=rdoc --exclude-dir=node_modules --exclude-dir=tmp --exclude-dir=public --exclude-dir=.meteor --exclude-dir=log --exclude-dir=tmp --exclude-dir=builtAssets --exclude-dir=extras --exclude-dir=vendor --exclude-dir=coverage --exclude="*.log" --exclude="*.bz2" --exclude-dir=pkg --exclude-dir=_other --exclude-dir=_tmp --exclude-dir=.sass-cache --exclude-dir=venv --exclude-dir=.venv --exclude-dir=__pycache__ -r'
 
 # Prints the number of lines in the current git repository contributed by each of the contributors
 # From: http://stackoverflow.com/questions/4589731/git-blame-statistics
@@ -49,3 +49,6 @@ alias bu='bundle update --source'
 tw() {
   livestreamer twitch.tv/$1 "${2:-high}" --ringbuffer-size 100M --hls-live-edge 12 -l ${3:-info}
 }
+
+alias disable-lid-close='xset s off; xset -dpms; xset s noblank'
+
