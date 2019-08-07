@@ -36,6 +36,8 @@ alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo l
 alias curlt='curl -w %{time_total} -s -o /dev/null'
 alias curltf='curl -w "    time_namelookup:  %{time_namelookup}\n       time_connect:  %{time_connect}\n    time_appconnect:  %{time_appconnect}\n   time_pretransfer:  %{time_pretransfer}\n      time_redirect:  %{time_redirect}\n time_starttransfer:  %{time_starttransfer}\n                    ----------\n         time_total:  %{time_total}\n" -s -o /dev/null'
 
+alias prettyjson='python -m json.tool'
+
 rdoc2md() {
     ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
 }
