@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APT_PACKAGES='wget curl guake rbenv zsh emacs vagrant aptitude lxc xclip tmux meld'
+APT_PACKAGES='wget curl guake zsh emacs vagrant aptitude lxc xclip tmux meld'
 
 #   ./install.sh
 #   ./install.sh [--yes|-y]
@@ -57,7 +57,7 @@ install_on_my_zsh () {
 }
 install_on_my_zsh_plugins () {
     mkdir -p $OHMYZSH_PLUGINS_DIR
-    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $OHMYZSH_PLUGINS_DIR/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $OHMYZSH_PLUGINS_DIR/zsh-syntax-highlighting
 }
 
 install_tmux_plugins () {
@@ -103,10 +103,10 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/vagrant/Vagrantfile ~/.vagrant.d/Vagrantfile
 
   # beets
-  sudo apt-get install -y python-pip
-  rm -rf ~/.config/beets
-  mkdir -p ~/.config
-  ln -sfv $PWD/beets/config ~/.config/beets
+  # sudo apt-get install -y python-pip
+  # rm -rf ~/.config/beets
+  # mkdir -p ~/.config
+  # ln -sfv $PWD/beets/config ~/.config/beets
 
   # tmux
   install_tmux_plugins
@@ -117,4 +117,5 @@ if [[ $REPLY == [yY] ]]; then
   rm -rf ~/.gconf/apps/guake
   ln -sfv $PWD/guake/gconf ~/.gconf/apps/guake
 
+  # TODO: rbenv
 fi
