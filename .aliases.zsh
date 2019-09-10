@@ -52,5 +52,9 @@ tw() {
   livestreamer twitch.tv/$1 "${2:-high}" --ringbuffer-size 100M --hls-live-edge 12 -l ${3:-info}
 }
 
+shapass() {
+    echo -n $1 | sha256sum | cut -f1 -d\ | xxd -r -p | base64 | cut -c -${2:-32}
+}
+
 alias disable-lid-close='xset s off; xset -dpms; xset s noblank'
 
