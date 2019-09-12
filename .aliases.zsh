@@ -43,7 +43,7 @@ rdoc2md() {
 }
 
 genhash() {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 | cut -c -${1:-32}
 }
 
 alias bu='bundle update --source'
