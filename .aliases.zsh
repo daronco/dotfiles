@@ -36,18 +36,24 @@ alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo l
 alias curlt='curl -w %{time_total} -s -o /dev/null'
 alias curltf='curl -w "    time_namelookup:  %{time_namelookup}\n       time_connect:  %{time_connect}\n    time_appconnect:  %{time_appconnect}\n   time_pretransfer:  %{time_pretransfer}\n      time_redirect:  %{time_redirect}\n time_starttransfer:  %{time_starttransfer}\n                    ----------\n         time_total:  %{time_total}\n" -s -o /dev/null'
 
+alias prettyjson='python -m json.tool'
+
 rdoc2md() {
     ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
 }
 
 genhash() {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 | cut -c -${1:-32}
 }
 
 alias bu='bundle update --source'
 
 tw() {
   livestreamer twitch.tv/$1 "${2:-high}" --ringbuffer-size 100M --hls-live-edge 12 -l ${3:-info}
+}
+
+shapass() {
+    echo -n $1 | sha256sum | cut -f1 -d\ | xxd -r -p | base64 | cut -c -${2:-32}
 }
 
 alias disable-lid-close='xset s off; xset -dpms; xset s noblank'
