@@ -59,3 +59,7 @@ shapass() {
 alias disable-lid-close='xset s off; xset -dpms; xset s noblank'
 
 alias reload-gnome='killall -3 gnome-shell'
+
+alias myip='wget https://ipinfo.io/ip -qO -'
+
+alias ssh-inf='ssh -vtA fcecagno@portal.inf.ufrgs.br ssh -tAv pi@vpn.mconf.com ssh'
