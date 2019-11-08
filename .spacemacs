@@ -91,6 +91,15 @@ values."
    ;; Spacemacs and never uninstall them. (default is `used-only')
    dotspacemacs-install-packages 'used-only))
 
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration. You are free to put any user code."
+   ;; Fixes undefined functions at startup
+   (require 'helm)
+   (require 'tramp)
+)
+
 (defun dotspacemacs/init ()
   "Initialization function.
 This function is called at the very startup of Spacemacs initialization
