@@ -28,7 +28,11 @@ for file in ${sources}; do
 done
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
+
+# Disable escaping of URLs when pasting
+# See https://stackoverflow.com/questions/25614613/how-to-disable-zsh-substitution-autocomplete-with-url-and-backslashes
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Disable auto correction
 DISABLE_CORRECTION="true"
