@@ -16,6 +16,7 @@ alias grepr='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc --excl
 alias git-contrib-full='git ls-tree -r HEAD|sed -re "s/^.{53}//"|while read filename; do file "$filename"; done|grep -E ": .*text"|sed -r -e "s/: .*//"|while read filename; do git blame -w "$filename"; done|sed -r -e "s/.*\((.*)[0-9]{4}-[0-9]{2}-[0-9]{2} .*/\1/" -e "s/ +$//"|sort|uniq -c'
 
 alias git-rm-deleted='git ls-files --deleted -z | xargs -0 git rm'
+alias gits='git status'
 # git rm $(git ls-files --deleted)
 
 alias rm-logs='confirm && find . -name "*.log" -delete -print'
@@ -24,11 +25,9 @@ alias rm-sass-cache='find . -name ".sass-cache" -type d -exec rm -vr {} +'
 alias va='vagrant'
 alias vag='vagrant'
 
-alias doc='sudo docker-compose'
-alias docr='sudo docker-compose run'
-alias docup='sudo docker-compose up'
 alias docker-rm-all='sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)'
 alias docker-stop-all='sudo docker stop $(sudo docker ps -a -q)'
+alias docker-prune='docker container prune -f; docker image prune -f'
 
 alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo lxc-stop -n $m ; done'
 
@@ -38,12 +37,19 @@ alias curltf='curl -w "    time_namelookup:  %{time_namelookup}\n       time_con
 
 alias prettyjson='python -m json.tool'
 
+alias kc='kubectl'
+alias kc-pods='kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name'
+
 rdoc2md() {
     ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
 }
 
 genhash() {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 | cut -c -${1:-32}
+}
+
+gensecret() {
+    openssl rand -base64 32 | sha1sum
 }
 
 alias bu='bundle update --source'
@@ -60,6 +66,7 @@ alias disable-lid-close='xset s off; xset -dpms; xset s noblank'
 
 alias reload-gnome='killall -3 gnome-shell'
 
-alias myip='wget https://ipinfo.io/ip -qO -'
+# alias myip='wget https://ipinfo.io/ip -qO -'
+alias myip='curl ifconfig.me'
 
 alias ssh-inf='ssh -vtA fcecagno@portal.inf.ufrgs.br ssh -tAv pi@vpn.mconf.com ssh'
