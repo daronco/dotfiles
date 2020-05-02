@@ -7,7 +7,10 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ## very good
 # ZSH_THEME="daronco"
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="spaceship"
+# ZSH_THEME=minimal_improve
+ZSH_THEME=minimal_daronco
 # ZSH_THEME="crunch"
 ## good
 # ZSH_THEME="zhann"
