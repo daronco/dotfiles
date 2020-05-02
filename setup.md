@@ -37,8 +37,8 @@ Open a new terminal window and:
 
 
 ```bash
-git clone git@github.com:daronco/terminal-stuff.git
-cd terminal-stuff
+git clone git@github.com:daronco/dotfiles.git
+cd dotfiles
 ./install.sh
 ```
 
@@ -153,7 +153,7 @@ gsettings set org.gnome.desktop.wm.preferences theme Adwaita-X-dark
 ## Yakuake
 
 ```bash
-cd terminal-stuff
+cd dotfiles
 mkdir -p ~/.kde/share/apps/konsole/
 cp konsole/* ~/.kde/share/apps/konsole/
 ```
