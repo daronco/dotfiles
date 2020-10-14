@@ -91,6 +91,7 @@ if [[ $REPLY == [yY] ]]; then
   install_on_my_zsh_plugins
   ln -sfv $PWD/.zshrc ~/.zshrc
   ln -sfv $PWD/.aliases.zsh ~/.aliases.zsh
+  test -f $PWD/.aliases.zsh.local && ln -sfv $PWD/.aliases.zsh.local ~/.aliases.zsh.local
   ln -sfv $PWD/.functions.zsh ~/.functions.zsh
   # zsh themes
   ln -sfv $PWD/zsh/themes $OHMYZSH_THEMES_DIR

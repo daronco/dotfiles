@@ -1,3 +1,5 @@
+FILE=~/.aliases.zsh.local && test -f $FILE && source $FILE
+
 # Emacses
 alias emacs='emacs -nw'
 alias e='emacsclient -t'
@@ -6,10 +8,10 @@ alias estart='emacs --daemon'
 alias ekill='emacsclient -e "(kill-emacs)"'
 
 # Greps
-alias grep='grep --exclude="*~" --color=auto'
-alias grep-js='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=node_modules --exclude-dir=doc --exclude-dir=tmp --exclude-dir=public --exclude-dir=.meteor --exclude-dir=log --exclude-dir=tmp --exclude-dir=builtAssets --exclude="*.log"'
-alias grep-rails='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc --exclude-dir=rdoc --exclude-dir=log --exclude-dir=tmp --exclude-dir=public --exclude-dir=extras --exclude-dir=vendor --exclude="*.log" --exclude-dir=coverage --exclude-dir=pkg --exclude-dir=_other --exclude-dir=_tmp --exclude-dir=.sass-cache'
-alias grepr='grep --exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc --exclude-dir=rdoc --exclude-dir=node_modules --exclude-dir=tmp --exclude-dir=public --exclude-dir=.meteor --exclude-dir=log --exclude-dir=tmp --exclude-dir=builtAssets --exclude-dir=extras --exclude-dir=vendor --exclude-dir=coverage --exclude="*.log" --exclude="*.bz2" --exclude-dir=pkg --exclude-dir=_other --exclude-dir=_tmp --exclude-dir=.sass-cache --exclude-dir=venv --exclude-dir=.venv --exclude-dir=__pycache__ --exclude-dir=dist -r'
+IGNORES='--exclude-dir=.git --exclude-dir=.svn --exclude-dir=doc --exclude-dir=rdoc --exclude-dir=node_modules --exclude-dir=tmp --exclude-dir=public --exclude-dir=.meteor --exclude-dir=log --exclude-dir=tmp --exclude-dir=builtAssets --exclude-dir=extras --exclude-dir=vendor --exclude-dir=coverage --exclude="*.log" --exclude="*.bz2" --exclude-dir=pkg --exclude-dir=_other --exclude-dir=_tmp --exclude-dir=.sass-cache --exclude-dir=venv --exclude-dir=.venv --exclude-dir=__pycache__ --exclude-dir=dist --exclude-dir=.cache --exclude-dir=.volumes --exclude-dir=private'
+GREP='grep --exclude="*~" --color=auto'
+alias grep="$GREP"
+alias grepr="$GREP $IGNORES -r"
 
 # Prints the number of lines in the current git repository contributed by each of the contributors
 # From: http://stackoverflow.com/questions/4589731/git-blame-statistics
@@ -28,6 +30,8 @@ alias vag='vagrant'
 alias docker-rm-all='sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)'
 alias docker-stop-all='sudo docker stop $(sudo docker ps -a -q)'
 alias docker-prune='docker container prune -f; docker image prune -f'
+alias d-c='docker-compose'
+alias dcd='docker-compose down'
 
 alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo lxc-stop -n $m ; done'
 
@@ -45,11 +49,19 @@ rdoc2md() {
 }
 
 genhash() {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 | cut -c -${1:-32}
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1 | cut -c -${1:-32}
 }
 
 gensecret() {
     openssl rand -base64 32 | sha1sum
+}
+
+tob64() {
+    echo -n ${1} | base64
+}
+
+fromb64() {
+    echo -n ${1} | base64 -d
 }
 
 alias bu='bundle update --source'
@@ -62,6 +74,10 @@ shapass() {
     echo -n $1 | sha256sum | cut -f1 -d\ | xxd -r -p | base64 | cut -c -${2:-32}
 }
 
+bbb-checksum() {
+    echo -n $1 | sha1sum | cut -d ' ' -f 1
+}
+
 alias disable-lid-close='xset s off; xset -dpms; xset s noblank'
 
 alias reload-gnome='killall -3 gnome-shell'
@@ -69,4 +85,6 @@ alias reload-gnome='killall -3 gnome-shell'
 # alias myip='wget https://ipinfo.io/ip -qO -'
 alias myip='curl ifconfig.me'
 
-alias ssh-inf='ssh -vtA fcecagno@portal.inf.ufrgs.br ssh -tAv pi@vpn.mconf.com ssh'
+alias tmux-kill-others='tmux kill-session -a'
+
+alias curlt='printf "time_namelookup: %%{time_namelookup}\\\n\ntime_connect: %%{time_connect}\\\n\ntime_appconnect: %%{time_appconnect}\\\n\ntime_pretransfer: %%{time_pretransfer}\\\n\ntime_redirect: %%{time_redirect}\\\n\ntime_starttransfer: %%{time_starttransfer}\\\n\ntime_total: %%{time_total}\\\n\n" > /tmp/curlt-format.txt && curl -w "@/tmp/curlt-format.txt" -o /dev/null -s'
