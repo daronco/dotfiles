@@ -42,6 +42,10 @@ alias curltf='curl -w "    time_namelookup:  %{time_namelookup}\n       time_con
 alias prettyjson='python -m json.tool'
 
 alias kc='kubectl'
+alias k='kubectl'
+alias kg='kubectl get'
+alias kl='kubectl logs'
+alias klf='kubectl logs -f'
 alias kc-pods='kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name'
 
 rdoc2md() {
@@ -53,7 +57,14 @@ genhash() {
 }
 
 gensecret() {
-    openssl rand -base64 32 | sha1sum
+    # openssl rand -base64 32 | sha1sum
+    openssl rand -hex ${1:-20}
+}
+gensecretapi() {
+    gensecret
+}
+gensecretlti() {
+    gensecret 30
 }
 
 tob64() {
@@ -67,7 +78,8 @@ fromb64() {
 alias bu='bundle update --source'
 
 tw() {
-  livestreamer twitch.tv/$1 "${2:-high}" --ringbuffer-size 100M --hls-live-edge 12 -l ${3:-info}
+  # livestreamer twitch.tv/$1 "${2:-best}" --ringbuffer-size 100M --hls-live-edge 12 -l ${3:-info}
+  streamlink --twitch-disable-ads twitch.tv/$1 "${2:-best}"
 }
 
 shapass() {
@@ -80,7 +92,7 @@ bbb-checksum() {
 
 alias disable-lid-close='xset s off; xset -dpms; xset s noblank'
 
-alias reload-gnome='killall -3 gnome-shell'
+alias reload-gnome-shell='killall -3 gnome-shell'
 
 # alias myip='wget https://ipinfo.io/ip -qO -'
 alias myip='curl ifconfig.me'
