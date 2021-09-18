@@ -6,10 +6,6 @@ Clone it somewhere and:
 ./install.sh
 ```
 
-# Setting up a new machine?
+# TODO
 
-See [setup.md](https://github.com/daronco/dotfiles/blob/master/setup.md).
-
-# TODO:
-
-* https://github.com/holman/dotfiles
+* Change the structure to be based on https://github.com/holman/dotfiles

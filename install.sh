@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APT_PACKAGES='wget curl guake zsh emacs vagrant aptitude lxc xclip tmux meld'
+APT_PACKAGES='wget curl guake zsh emacs aptitude lxc xclip tmux meld'
 
 #   ./install.sh
 #   ./install.sh [--yes|-y]
@@ -23,8 +23,6 @@ echo "          ~/.bashrc"
 echo "          ~/.profile"
 echo "          ~/.emacs"
 echo "          ~/.emacs.d/"
-echo "          ~/.config/beets"
-echo "          ~/.vagrant.d/scripts/"
 echo "          ~/.tmux.conf"
 echo "          ~/.gconf/apps/guake/"
 echo "-------------------------------------------------------------------------"
@@ -35,12 +33,6 @@ if [ $FORCE_YES ]; then
 else
     read -p "Proceed (y/N)?"
 fi
-
-# PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
-# install_prelude () {
-#   rm -rf $PRELUDE_INSTALL_DIR
-#   curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
-# }
 
 SPACEMACS_INSTALL_DIR="$HOME/.emacs.d"
 install_spacemacs () {
@@ -80,9 +72,6 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/ssh_config ~/.ssh/config
 
   # emacs
-  # install_prelude
-  # rm -rf ~/.emacs.d/personal && ln -sfv $PWD/prelude-personal/personal ~/.emacs.d/personal
-  # rm -rf ~/.emacs.d/themes && ln -sfv $PWD/prelude-personal/themes ~/.emacs.d/themes
   install_spacemacs
   ln -sfv $PWD/.spacemacs ~/.spacemacs
 
@@ -95,19 +84,6 @@ if [[ $REPLY == [yY] ]]; then
   ln -sfv $PWD/.functions.zsh ~/.functions.zsh
   # zsh themes
   ln -sfv $PWD/zsh/themes $OHMYZSH_THEMES_DIR
-
-  # vagrant
-  mkdir -p ~/.vagrant.d/
-  rm -rf ~/.vagrant.d/scripts
-  rm -rf ~/.vagrant.d/Vagrantfile
-  ln -sfv $PWD/vagrant/scripts ~/.vagrant.d/scripts
-  ln -sfv $PWD/vagrant/Vagrantfile ~/.vagrant.d/Vagrantfile
-
-  # beets
-  # sudo apt-get install -y python-pip
-  # rm -rf ~/.config/beets
-  # mkdir -p ~/.config
-  # ln -sfv $PWD/beets/config ~/.config/beets
 
   # tmux
   install_tmux_plugins
