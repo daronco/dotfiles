@@ -1,11 +1,11 @@
 killit() {
- # Kills any process that matches a regexp passed to it
- ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
+    # Kills any process that matches a regexp passed to it
+    ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
 }
 
 #if [ -z "\${which tree}" ]; then
 tree () {
-  find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+    find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 }
 #fi
 
@@ -72,10 +72,6 @@ tw() {
     streamlink --twitch-disable-ads twitch.tv/$1 "${2:-best}"
 }
 
-tw-upgrade () {
-    sudo pip install --upgrade streamlink
-}
-
 shapass() {
     echo -n $1 | sha256sum | cut -f1 -d\ | xxd -r -p | base64 | cut -c -${2:-32}
 }
@@ -86,4 +82,37 @@ bbb-checksum() {
 
 rdoc2md() {
     ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
+}
+
+# cd's into a project
+# tries its best to find one with the word passed in the first arg
+# searches in a default directory assuming projects are organized as in:
+#
+# $basedir
+# |____ group1
+# | |____ proj1
+# | |____ proj2
+# |____ group2
+# | |____ proj3
+#
+pj () {
+    basedir=~/dev
+    dir=$basedir/mconf/${1}
+    if [[ -d $dir ]]; then
+        cd $dir
+    else
+        dir=$basedir/mconf/mconf-${1}
+        if [[ -d $dir ]]; then
+            cd $dir
+        else
+            # search inside $basedir, a name of a project with the string passed by the user
+            # sort by more recently modified and cd into the first result
+            dir=$(find $basedir -mindepth 2 -maxdepth 2 -type d -iname "*${1}*" -printf "\n%AD %AT %p" | sort -k1.8nr -k1.1nr -k1r | cut -d ' ' -s -f3 | head -1)
+            if [[ -d $dir ]]; then
+                cd $dir
+            else
+                echo "No project found for: ${1}"
+            fi
+        fi
+    fi
 }
