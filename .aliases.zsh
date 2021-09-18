@@ -46,7 +46,17 @@ alias k='kubectl'
 alias kg='kubectl get'
 alias kl='kubectl logs'
 alias klf='kubectl logs -f'
-alias kc-pods='kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name'
+alias kctx='kubectx'
+alias kns='kubens'
+alias k-nod-full='kubectl get nodes -owide --show-labels'
+alias k-nod-pod='kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name'
+alias k-nod-top="kubectl describe nodes | grep 'Name:\|  cpu\|  memory'"
+# alias kc-once="kubectl run -it --rm alpine --image=alpine:3.6 --restart=Never"
+# alias kc-once="kubectl run -it --rm alpine-$(openssl rand -hex ${1:-3}) --image=alpine:3.6 --restart=Never"
+
+kc_once() {
+    kubectl run -it --rm alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never ${@}
+}
 
 rdoc2md() {
     ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
@@ -82,12 +92,18 @@ tw() {
   streamlink --twitch-disable-ads twitch.tv/$1 "${2:-best}"
 }
 
+alias tw-upgrade='sudo pip install --upgrade streamlink'
+
 shapass() {
     echo -n $1 | sha256sum | cut -f1 -d\ | xxd -r -p | base64 | cut -c -${2:-32}
 }
 
 bbb-checksum() {
     echo -n $1 | sha1sum | cut -d ' ' -f 1
+}
+
+replace() {
+    grepr $1 -l | xargs sed -i "s/$1/$2/g"
 }
 
 alias disable-lid-close='xset s off; xset -dpms; xset s noblank'
@@ -98,5 +114,6 @@ alias reload-gnome-shell='killall -3 gnome-shell'
 alias myip='curl ifconfig.me'
 
 alias tmux-kill-others='tmux kill-session -a'
+alias tmux-seed='~/.dotfiles/tmux-start.sh'
 
 alias curlt='printf "time_namelookup: %%{time_namelookup}\\\n\ntime_connect: %%{time_connect}\\\n\ntime_appconnect: %%{time_appconnect}\\\n\ntime_pretransfer: %%{time_pretransfer}\\\n\ntime_redirect: %%{time_redirect}\\\n\ntime_starttransfer: %%{time_starttransfer}\\\n\ntime_total: %%{time_total}\\\n\n" > /tmp/curlt-format.txt && curl -w "@/tmp/curlt-format.txt" -o /dev/null -s'
