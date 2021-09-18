@@ -47,7 +47,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github ruby bundler gem rails rbenv zeus node npm coffee command-not-found battery extract rsync rand-quote history-substring-search history pj last-working-dir zsh-syntax-highlighting)
+plugins=(git github ruby bundler gem rails rbenv zeus node npm coffee command-not-found battery extract rsync rand-quote history-substring-search history last-working-dir zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,9 +96,6 @@ export HISTSIZE=4096
 # My bundler doesn't have the flag --jobs yet
 eval "alias bi='bundle install'" # --jobs=$cores_num'"
 
-# Project paths for the plugin pj
-PROJECT_PATHS=(~/Dev/mconf ~/Dev/daronco ~/Dev/bigbluebutton)
-
 # Golang
 export GOPATH=$HOME/Dev/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
@@ -111,6 +108,9 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export MCONF_API=~/go/src/github.com/mconf/mconf-api
+
+# Basedir of all dev projects
+export PROJECTS_BASEDIR=~/dev
 
 # zsh pure
 fpath+=$HOME/.zsh/pure
