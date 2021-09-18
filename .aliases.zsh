@@ -46,22 +46,19 @@ alias tmux-boot='~/.dotfiles/tmux-boot.sh'
 #
 # kubernetes
 #
-alias kc='kubectl'
-alias k='kubectl'
-alias kg='kubectl get'
-alias kl='kubectl logs'
-alias klf='kubectl logs -f'
-alias kctx='kubectx'
-alias kns='kubens'
-alias k-nod-full='kubectl get nodes -owide --show-labels'
-alias k-nod-pod='kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name'
+alias kc="kubectl"
+alias k="kubectl"
+alias kg="kubectl get"
+alias kl="kubectl logs"
+alias klf="kubectl logs -f"
+alias kctx="kubectx"
+alias kns="kubens"
+alias k-nod-full="kubectl get nodes -owide --show-labels"
+alias k-nod-pod="kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name"
 alias k-nod-top="kubectl describe nodes | grep 'Name:\|  cpu\|  memory'"
 # alias kc-once="kubectl run -it --rm alpine --image=alpine:3.6 --restart=Never"
 # alias kc-once="kubectl run -it --rm alpine-$(openssl rand -hex ${1:-3}) --image=alpine:3.6 --restart=Never"
-
-kc_once() {
-    kubectl run -it --rm alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never ${@}
-}
+alias k-once="kubectl run -it --rm alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never"
 
 #
 # curl
@@ -70,7 +67,6 @@ kc_once() {
 alias curltf='curl -w "    time_namelookup:  %{time_namelookup}\n       time_connect:  %{time_connect}\n    time_appconnect:  %{time_appconnect}\n   time_pretransfer:  %{time_pretransfer}\n      time_redirect:  %{time_redirect}\n time_starttransfer:  %{time_starttransfer}\n                    ----------\n         time_total:  %{time_total}\n" -s -o /dev/null'
 alias curlt='printf "time_namelookup: %%{time_namelookup}\\\n\ntime_connect: %%{time_connect}\\\n\ntime_appconnect: %%{time_appconnect}\\\n\ntime_pretransfer: %%{time_pretransfer}\\\n\ntime_redirect: %%{time_redirect}\\\n\ntime_starttransfer: %%{time_starttransfer}\\\n\ntime_total: %%{time_total}\\\n\n" > /tmp/curlt-format.txt && curl -w "@/tmp/curlt-format.txt" -o /dev/null -s'
 # alias curlt='curl -w %{time_total} -s -o /dev/null'
-
 
 #
 # ruby
@@ -86,48 +82,8 @@ alias reload-gnome-shell='killall -3 gnome-shell'
 alias prettyjson='python -m json.tool'
 alias myip='curl ifconfig.me' # alias myip='wget https://ipinfo.io/ip -qO -'
 
-genhash() {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1 | cut -c -${1:-32}
-}
-gensecret() {
-    # openssl rand -base64 32 | sha1sum
-    openssl rand -hex ${1:-20}
-}
-gensecretapi() {
-    gensecret
-}
-gensecretlti() {
-    gensecret 30
-}
-tob64() {
-    echo -n ${1} | base64
-}
-fromb64() {
-    echo -n ${1} | base64 -d
-}
-replace() {
-    grepr $1 -l | xargs sed -i "s/$1/$2/g"
-}
-
-alias tw-upgrade='sudo pip install --upgrade streamlink'
-tw() {
-    # livestreamer twitch.tv/$1 "${2:-best}" --ringbuffer-size 100M --hls-live-edge 12 -l ${3:-info}
-    streamlink --twitch-disable-ads twitch.tv/$1 "${2:-best}"
-}
-
-shapass() {
-    echo -n $1 | sha256sum | cut -f1 -d\ | xxd -r -p | base64 | cut -c -${2:-32}
-}
-bbb-checksum() {
-    echo -n $1 | sha1sum | cut -d ' ' -f 1
-}
-
 #
 # old
 #
 alias lxc-stop-all='for m in `sudo lxc-ls --running | cut -d" " -f 1`; do sudo lxc-stop -n $m ; done'
 alias disable-lid-close='xset s off; xset -dpms; xset s noblank'
-
-rdoc2md() {
-    ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
-}
