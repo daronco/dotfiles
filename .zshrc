@@ -103,9 +103,13 @@ PROJECT_PATHS=(~/Dev/mconf ~/Dev/daronco ~/Dev/bigbluebutton)
 export GOPATH=$HOME/Dev/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
-# Automatically open tmux
-[ -z "$TMUX" ] && command -v tmux > /dev/null && TERM=xterm-256color && exec tmux
-
 # CTRL+arrows to move between words
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# Automatically open tmux when running a new shell
+[ -z "$TMUX" ] && command -v tmux > /dev/null && TERM=xterm-256color && cd ~/dev && exec tmux
