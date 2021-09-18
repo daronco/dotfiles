@@ -110,6 +110,18 @@ bindkey '^[[1;5C' forward-word
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export MCONF_API=~/go/src/github.com/mconf/mconf-api
+
+# zsh pure
+fpath+=$HOME/.zsh/pure
+# PURE_PROMPT_SYMBOL=➜
+# PURE_PROMPT_SYMBOL=\>
+autoload -U promptinit; promptinit
+zstyle :prompt:pure:prompt:success color cyan
+zstyle :prompt:pure:prompt:error color red
+zstyle :prompt:pure:prompt:success attr +bold
+zstyle :prompt:pure:prompt:error attr +bold
+prompt pure
 
 # Automatically open tmux when running a new shell
 [ -z "$TMUX" ] && command -v tmux > /dev/null && TERM=xterm-256color && cd ~/dev && exec tmux
