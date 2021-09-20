@@ -3,11 +3,11 @@ killit() {
     ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
 }
 
-#if [ -z "\${which tree}" ]; then
-tree () {
-    find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
-}
-#fi
+if [ -z "\${which tree}" ]; then
+    tree () {
+        find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+    }
+fi
 
 exip () {
     # gather external ip address

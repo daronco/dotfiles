@@ -8,4 +8,5 @@ set -e
 export DOTFILES=$HOME/.dotfiles/new
 
 # find the installers and run them iteratively
-find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+if [ -f system/install.sh ]; then sh -c "system/install.sh"; fi
+find . -name install.sh -not -path "./system/install.sh" | while read installer ; do sh -c "${installer}" ; done

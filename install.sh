@@ -1,7 +1,5 @@
 #!/bin/bash
 
-APT_PACKAGES='wget curl guake zsh emacs aptitude lxc xclip tmux meld'
-
 #   ./install.sh
 #   ./install.sh [--yes|-y]
 
@@ -40,18 +38,6 @@ install_spacemacs () {
     git clone https://github.com/syl20bnr/spacemacs $SPACEMACS_INSTALL_DIR
 }
 
-OHMYZSH_INSTALL_DIR="$HOME/.oh-my-zsh"
-OHMYZSH_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
-OHMYZSH_THEMES_DIR="$HOME/.oh-my-zsh/custom/themes"
-install_on_my_zsh () {
-    rm -rf $OHMYZSH_INSTALL_DIR
-    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-}
-install_on_my_zsh_plugins () {
-    mkdir -p $OHMYZSH_PLUGINS_DIR
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $OHMYZSH_PLUGINS_DIR/zsh-syntax-highlighting
-}
-
 install_tmux_plugins () {
     rm -rf $PWD/tmux/tmux-yank
     git clone https://github.com/tmux-plugins/tmux-yank.git $PWD/tmux/tmux-yank
@@ -59,31 +45,9 @@ install_tmux_plugins () {
 
 if [[ $REPLY == [yY] ]]; then
 
-  # default packages
-  sudo apt-get install -y $APT_PACKAGES
-  sudo pip install --upgrade pip
-  sudo pip install --upgrade livestreamer
-
-  # bash, git, etc
-  ln -sfv $PWD/.gitconfig ~/.gitconfig
-  ln -sfv $PWD/.gemrc ~/.gemrc
-  ln -sfv $PWD/.bashrc ~/.bashrc
-  ln -sfv $PWD/.profile ~/.profile
-  ln -sfv $PWD/ssh_config ~/.ssh/config
-
   # emacs
   install_spacemacs
   ln -sfv $PWD/.spacemacs ~/.spacemacs
-
-  # zsh
-  install_on_my_zsh
-  install_on_my_zsh_plugins
-  ln -sfv $PWD/.zshrc ~/.zshrc
-  ln -sfv $PWD/.aliases.zsh ~/.aliases.zsh
-  test -f $PWD/.aliases.zsh.local && ln -sfv $PWD/.aliases.zsh.local ~/.aliases.zsh.local
-  ln -sfv $PWD/.functions.zsh ~/.functions.zsh
-  # zsh themes
-  ln -sfv $PWD/zsh/themes $OHMYZSH_THEMES_DIR
 
   # tmux
   install_tmux_plugins
