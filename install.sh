@@ -38,20 +38,11 @@ install_spacemacs () {
     git clone https://github.com/syl20bnr/spacemacs $SPACEMACS_INSTALL_DIR
 }
 
-install_tmux_plugins () {
-    rm -rf $PWD/tmux/tmux-yank
-    git clone https://github.com/tmux-plugins/tmux-yank.git $PWD/tmux/tmux-yank
-}
-
 if [[ $REPLY == [yY] ]]; then
 
   # emacs
   install_spacemacs
   ln -sfv $PWD/.spacemacs ~/.spacemacs
-
-  # tmux
-  install_tmux_plugins
-  ln -sfv $PWD/.tmux.conf ~/.tmux.conf
 
   # guake
   mkdir ~/.gconf/apps/
