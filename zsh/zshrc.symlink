@@ -1,6 +1,5 @@
-# shortcut to this dotfiles path is $ZSH
-export DOTFILES=$HOME/.dotfiles/new
-# TODO: remove "/new" from here
+# shortcut to this dotfiles path
+export DOTFILES=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/dev

@@ -1,3 +1,5 @@
+export DOTFILES=$HOME/.dotfiles
+
 clone_or_update () {
     if [ -d "$1" ]
     then

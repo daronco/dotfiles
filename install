@@ -4,8 +4,7 @@
 
 set -e
 
-# cd "$(dirname $0)"/..
-export DOTFILES=$HOME/.dotfiles/new
+. _functions.sh
 
 # find the installers and run them iteratively
 if [ -f system/install.sh ]; then sh -c "system/install.sh"; fi
