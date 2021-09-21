@@ -14,14 +14,6 @@ done
 echo
 echo "-------------------------------------------------------------------------"
 echo " WARNING: this will override:"
-echo "          ~/.gitconfig"
-echo "          ~/.gemrc"
-echo "          ~/.bash_aliases"
-echo "          ~/.bashrc"
-echo "          ~/.profile"
-echo "          ~/.emacs"
-echo "          ~/.emacs.d/"
-echo "          ~/.tmux.conf"
 echo "          ~/.gconf/apps/guake/"
 echo "-------------------------------------------------------------------------"
 echo
@@ -32,17 +24,7 @@ else
     read -p "Proceed (y/N)?"
 fi
 
-SPACEMACS_INSTALL_DIR="$HOME/.emacs.d"
-install_spacemacs () {
-    rm -rf $SPACEMACS_INSTALL_DIR
-    git clone https://github.com/syl20bnr/spacemacs $SPACEMACS_INSTALL_DIR
-}
-
 if [[ $REPLY == [yY] ]]; then
-
-  # emacs
-  install_spacemacs
-  ln -sfv $PWD/.spacemacs ~/.spacemacs
 
   # guake
   mkdir ~/.gconf/apps/
