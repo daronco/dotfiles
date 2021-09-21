@@ -1,11 +1,16 @@
 # Install
 
-Clone it somewhere and:
+Clone it to ~/.dotfiles and:
 
 ```bash
-./install.sh
+./install
+./bootstrap
 ```
+
+This repository is based on https://github.com/holman/dotfiles (@184e33b).
 
 # TODO
 
-* Change the structure to be based on https://github.com/holman/dotfiles
+- [ ] on install, confirm before updating repos
+- [ ] ssh_config
+- [ ] guake?

@@ -1,0 +1,5 @@
+alias docker-rm-all='sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)'
+alias docker-stop-all='sudo docker stop $(sudo docker ps -a -q)'
+alias docker-prune='docker container prune -f; docker image prune -f'
+alias d-c='docker-compose'
+alias dcd='docker-compose down'

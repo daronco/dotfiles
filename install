@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Run all dotfiles installers.
+
+set -e
+
+. _functions.sh
+
+# find the installers and run them iteratively
+if [ -f system/install.sh ]; then sh -c "system/install.sh"; fi
+find . -name install.sh -not -path "./system/install.sh" | while read installer ; do sh -c "${installer}" ; done

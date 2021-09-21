@@ -63,7 +63,7 @@ bind > swap-pane -D
 bind < swap-pane -U
 
 # Copy to clipboard
-run-shell ~/.dotfiles/tmux/tmux-yank/yank.tmux
+# run-shell $DOTFILES/tmux/tmux-yank/yank.tmux
 # from http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/
 set -g mouse on
 set -g @yank_selection_mouse 'clipboard'

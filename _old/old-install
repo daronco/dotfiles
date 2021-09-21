@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#   ./install.sh
+#   ./install.sh [--yes|-y]
+
+while [ $# -gt 0 ]; do
+    if [ "$1" = "--yes" -o "$1" = "-y" ]; then
+        FORCE_YES=1
+        shift
+        continue
+    fi
+done
+
+echo
+echo "-------------------------------------------------------------------------"
+echo " WARNING: this will override:"
+echo "          ~/.gconf/apps/guake/"
+echo "-------------------------------------------------------------------------"
+echo
+
+if [ $FORCE_YES ]; then
+    REPLY=y
+else
+    read -p "Proceed (y/N)?"
+fi
+
+if [[ $REPLY == [yY] ]]; then
+
+  # guake
+  mkdir ~/.gconf/apps/
+  rm -rf ~/.gconf/apps/guake
+  ln -sfv $PWD/guake/gconf ~/.gconf/apps/guake
+
+  # TODO: rbenv
+fi
