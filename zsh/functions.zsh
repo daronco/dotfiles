@@ -96,7 +96,7 @@ rdoc2md() {
 # | |____ proj3
 #
 pj () {
-    basedir=~/dev
+    basedir=$PROJECTS
     dir=$basedir/mconf/${1}
     if [[ -d $dir ]]; then
         cd $dir
