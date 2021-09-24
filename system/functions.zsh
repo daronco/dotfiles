@@ -1,3 +1,21 @@
+print_info () {
+    printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+print_user () {
+    printf "\r  [ \033[0;33m??\033[0m ] $1\n"
+}
+
+print_success () {
+    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+print_fail () {
+    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+    # echo ''
+    # exit
+}
+
 killit() {
     # Kills any process that matches a regexp passed to it
     ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
