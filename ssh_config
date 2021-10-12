@@ -1,2 +1,3 @@
+IdentityFile ~/.ssh/id_ed25519
 Host *
   ServerAliveInterval 30
