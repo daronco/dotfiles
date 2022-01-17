@@ -1,5 +1,11 @@
 . $DOTFILES/_functions.sh
 
+KUBECTL_VERSION=1.21.5
+TMPFILE=$(mktemp)
+info "Installing kubectl ${KUBECTL_VERSION}"
+curl -Lo $TMPFILE "https://dl.k8s.io/release/v$KUBECTL_VERSION/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 $TMPFILE /usr/local/bin/kubectl
+
 info "Installing kubectx at /opt/kubectx"
 sudo sh -c ". $DOTFILES/_functions.sh; clone_or_update /opt/kubectx https://github.com/ahmetb/kubectx"
 sudo ln -s -f /opt/kubectx/kubectx /usr/local/bin/kubectx
