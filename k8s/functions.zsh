@@ -35,3 +35,34 @@ k-delete-evicted () {
         done
     fi
 }
+
+kind-create-default () {
+    TMPFILE=$(mktemp)
+    echo "Writing config to ${TMPFILE}"
+    cat >> $TMPFILE << EOF
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+nodes:
+- role: control-plane
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+  - containerPort: 443
+    hostPort: 443
+EOF
+    echo "Creating cluster..."
+    kind create cluster --config $TMPFILE
+    # TODO: name the cluster
+    echo "Enabling ingress-nginx..."
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+}
+
+kind-delete-default () {
+    kind delete cluster
+}

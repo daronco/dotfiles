@@ -24,6 +24,15 @@ curl -Lo $TMPFILE https://github.com/corneliusweig/konfig/raw/v0.2.6/konfig \
     && chmod +x $TMPFILE \
     && sudo mv -f $TMPFILE /usr/local/bin/konfig
 
+# stern: k8s logs
+# https://github.com/wercker/stern
+STERN_VERSION=1.11.0
+TMPFILE=$(mktemp)
+DESTINATION=/usr/local/bin/stern
+info "Installing stern ${STERN_VERSION} at ${DESTINATION}"
+curl -Lo $TMPFILE "https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_linux_amd64"
+sudo install -o root -g root -m 0755 $TMPFILE $DESTINATION
+
 # TODO:
 # curl -s https://fluxcd.io/install.sh | sudo bash
 # completions
