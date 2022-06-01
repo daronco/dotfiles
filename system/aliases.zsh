@@ -2,6 +2,8 @@
 # for aliases that can't be public
 FILE=~/.aliases.zsh.local && test -f $FILE && source $FILE
 
+alias genuuid='uuidgen'
+
 #
 # curl
 #

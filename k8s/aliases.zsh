@@ -7,8 +7,12 @@ alias klf="kubectl logs -f"
 alias ke="kubectl exec -ti"
 alias kctx="kubectx"
 alias kns="kubens"
+alias klf-ing="stern nginx -n ingress-nginx -e query_range -e health -e thanos -e mini-profiler -e query_exemplars -e grafana"
+# alias klf-ing="klf -l app.kubernetes.io/name=ingress-nginx -n ingress-nginx --max-log-requests=20 | grep -v -e query_range -e health -e thanos -e mini-profiler -e query_exemplars -e grafana"
+
 alias kust="kustomize"
-alias klf-ing="klf -l app.kubernetes.io/name=ingress-nginx -n ingress-nginx  | grep -v -e query_range -e health -e thanos -e mini-profiler -e query_exemplars -e grafana"
+alias kust-diff="kustomize build . | kubectl diff -f - || true"
+alias kust-apply="kustomize build . | kubectl apply -f -"
 
 alias k-nod-full="kubectl get nodes -owide --show-labels"
 alias k-nod-pod="kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name"
