@@ -33,6 +33,16 @@ info "Installing stern ${STERN_VERSION} at ${DESTINATION}"
 curl -Lo $TMPFILE "https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_linux_amd64"
 sudo install -o root -g root -m 0755 $TMPFILE $DESTINATION
 
+# kustomize
+KUSTOMIZE_VERSION=4.5.5
+TMPFILE=$(mktemp)
+TMPDIR=$(mktemp -d)
+DESTINATION=/usr/local/bin/kustomize
+info "Installing kustomize v${KUSTOMIZE_VERSION} at ${DESTINATION}"
+curl -Lo $TMPFILE "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz"
+tar -xvf $TMPFILE -C $TMPDIR
+sudo install -o root -g root -m 0755 $TMPDIR/kustomize $DESTINATION
+
 # TODO:
 # curl -s https://fluxcd.io/install.sh | sudo bash
 # completions
