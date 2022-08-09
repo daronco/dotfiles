@@ -49,3 +49,8 @@ sudo install -o root -g root -m 0755 $TMPDIR/kustomize $DESTINATION
 # echo "${fpath// /\n}" | grep -i completion
 # flux completion zsh > _flux
 # mv _flux ~/.oh-my-zsh/completions  # oh-my-zsh
+
+# not really for k8s, but...
+# https://rclone.org/install/
+info "Installing rclone"
+curl https://rclone.org/install.sh | sudo bash
