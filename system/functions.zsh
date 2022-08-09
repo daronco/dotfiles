@@ -65,3 +65,23 @@ replace() {
 shapass() {
     echo -n $1 | sha256sum | cut -f1 -d\ | xxd -r -p | base64 | cut -c -${2:-32}
 }
+
+# cat-certs main-cert.pem intermediate1.pem intermediate2.pem
+cat-certs() {
+    echo "Combining the files: $@"
+    filename=$1
+    filename="${filename%%.*}-combined.pem"
+    echo "Writing output to '${filename}'"
+    cat "$@" > "${filename}"
+    # echo "" > "${filename}"
+    # for var in "$@"
+    # do
+    #     cat "${var}" >> "${filename}"
+    #     printf "\n" >> "${filename}"
+    # done
+}
+
+# curl-cert-expiration mconf.com
+curl-cert-expiration() {
+    curl -k https://$1 -vI 2>&1 | grep "expire date"
+}
