@@ -1,6 +1,6 @@
 . $DOTFILES/_functions.sh
 
-KUBECTL_VERSION=1.21.5
+KUBECTL_VERSION=1.22.13
 TMPFILE=$(mktemp)
 info "Installing kubectl ${KUBECTL_VERSION}"
 curl -Lo $TMPFILE "https://dl.k8s.io/release/v$KUBECTL_VERSION/bin/linux/amd64/kubectl"
