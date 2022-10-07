@@ -18,8 +18,11 @@ alias k-nod-full="kubectl get nodes -owide --show-labels"
 alias k-nod-pod="kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name"
 alias k-nod-top="kubectl describe nodes | grep 'Name:\|  cpu\|  memory'"
 alias k-nod-label="kubectl get nodes --show-labels"
+alias k-nod-all="kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints,LABELS:.metadata.labels --no-headers"
+
 # alias kc-once="kubectl run -it --rm alpine --image=alpine:3.6 --restart=Never"
 # alias kc-once="kubectl run -it --rm alpine-$(openssl rand -hex ${1:-3}) --image=alpine:3.6 --restart=Never"
 alias k-once="kubectl run -it --rm alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never"
+alias k-once-curl="kubectl run -it --rm alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never -- /bin/sh -c 'apk update; apk add curl; sh; exit 0'"
 
 alias flf="flux logs -f"

@@ -83,5 +83,5 @@ cat-certs() {
 
 # curl-cert-expiration mconf.com
 curl-cert-expiration() {
-    curl -k https://$1 -vI 2>&1 | grep "expire date"
+    curl -k https://$1 -vI 2>&1 | grep -e "expire date" -e "O="
 }
