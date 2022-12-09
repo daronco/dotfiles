@@ -23,6 +23,12 @@ do-update-kubeconfig () {
     fi
 }
 
+# kubectl exec -- rails console
+ke-rc () {
+    readonly pod=${1:?"The pod must be specified."}
+    kubectl exec -ti $pod -c portal -- bin/rails c
+}
+
 k-delete-evicted () {
     echo "Removing evicted pods:"
     kubectl get pods | grep Evicted
