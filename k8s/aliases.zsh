@@ -1,3 +1,5 @@
+# TODO see https://github.com/Dbz/kube-aliases
+
 alias kc="kubectl"
 alias k="kubectl"
 alias kg="kubectl get"
@@ -19,6 +21,7 @@ alias k-nod-pod="kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.met
 alias k-nod-top="kubectl describe nodes | grep 'Name:\|  cpu\|  memory'"
 alias k-nod-label="kubectl get nodes --show-labels"
 alias k-nod-all="kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints,LABELS:.metadata.labels --no-headers"
+alias k-pod-res="kubectl get pods -A -o custom-columns=\"PODS:.metadata.name,NAMESPACE:.metadata.namespace,REQUEST_CPU:.spec.containers[*].resources.requests.cpu,REQUEST_MEM:.spec.containers[*].resources.requests.memory,LIMITS_CPU:.spec.containers[*].resources.limits.cpu,LIMITS_MEM:.spec.containers[*].resources.limits.memory\""
 
 # alias kc-once="kubectl run -it --rm alpine --image=alpine:3.6 --restart=Never"
 # alias kc-once="kubectl run -it --rm alpine-$(openssl rand -hex ${1:-3}) --image=alpine:3.6 --restart=Never"
