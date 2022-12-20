@@ -28,4 +28,8 @@ alias k-pod-res="kubectl get pods -A -o custom-columns=\"PODS:.metadata.name,NAM
 alias k-once="kubectl run -it --rm alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never"
 alias k-once-curl="kubectl run -it --rm alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never -- /bin/sh -c 'apk update; apk add curl; sh; exit 0'"
 
+# kube-ps1
+alias kon="kubeon -g"
+alias koff="kubeoff -g"
+
 alias flf="flux logs -f"
