@@ -52,6 +52,17 @@ sudo install -o root -g root -m 0755 $TMPDIR/kustomize $DESTINATION
 # flux completion zsh > _flux
 # mv _flux ~/.oh-my-zsh/completions  # oh-my-zsh
 
+# kubespy
+# https://github.com/pulumi/kubespy
+KUBESPY_VERSION=0.6.1
+TMPFILE=$(mktemp)
+TMPDIR=$(mktemp -d)
+DESTINATION=/usr/local/bin/kubespy
+info "Installing kubespy ${KUBESPY_VERSION} at ${DESTINATION}"
+curl -Lo $TMPFILE "https://github.com/pulumi/kubespy/releases/download/v${KUBESPY_VERSION}/kubespy-v${KUBESPY_VERSION}-linux-amd64.tar.gz"
+tar -xf $TMPFILE -C $TMPDIR
+sudo install -o root -g root -m 0755 $TMPDIR/kubespy $DESTINATION
+
 # not really for k8s, but...
 # https://rclone.org/install/
 info "Installing rclone"
