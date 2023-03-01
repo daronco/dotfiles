@@ -5,7 +5,7 @@ echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/source
 sudo apt update && sudo apt install gum
 
 info "Installing system packages"
-APT_PACKAGES='wget curl guake zsh emacs aptitude lxc xclip tmux meld git'
+APT_PACKAGES='wget curl guake zsh emacs aptitude lxc xclip tmux meld git python-is-python3'
 sudo apt-get install -y $APT_PACKAGES
 
 info "Installing python tools"
