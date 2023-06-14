@@ -1,7 +1,7 @@
 # TODO see https://github.com/Dbz/kube-aliases
 
-alias kc="kubectl"
 alias k="kubectl"
+alias k121="kubectl-1.21.14"
 alias kg="kubectl get"
 alias kl="kubectl logs"
 alias kd="kubectl describe"
@@ -15,6 +15,8 @@ alias klf-ing="stern nginx -n ingress-nginx -e query_range -e health -e thanos -
 alias kust="kustomize"
 alias kust-diff="kustomize build . | kubectl diff -f - || true"
 alias kust-apply="kustomize build . | kubectl apply -f -"
+alias kust121-diff="kustomize build . | kubectl-1.21.14 diff -f - || true"
+alias kust121-apply="kustomize build . | kubectl-1.21.14 apply -f -"
 
 alias k-nod-full="kubectl get nodes -owide --show-labels"
 alias k-nod-pod="kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name"
@@ -25,8 +27,9 @@ alias k-pod-res="kubectl get pods -A -o custom-columns=\"PODS:.metadata.name,NAM
 
 # alias kc-once="kubectl run -it --rm alpine --image=alpine:3.6 --restart=Never"
 # alias kc-once="kubectl run -it --rm alpine-$(openssl rand -hex ${1:-3}) --image=alpine:3.6 --restart=Never"
-alias k-once="kubectl run -it --rm alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never"
-alias k-once-curl="kubectl run -it --rm alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never -- /bin/sh -c 'apk update; apk add curl; sh; exit 0'"
+alias k-once="kubectl run -it --rm tmp-alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never"
+alias k-once-curl="kubectl run -it --rm tmp-alpine-`openssl rand -hex 3` --image=alpine:3.6 --restart=Never -- /bin/sh -c 'apk update; apk add curl; sh; exit 0'"
+alias k-once-rb="kubectl run -it --rm tmp-ruby-`openssl rand -hex 3` --image=ruby:3 --restart=Never -- bash"
 
 # kube-ps1
 alias kon="kubeon -g"

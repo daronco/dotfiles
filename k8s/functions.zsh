@@ -25,8 +25,22 @@ do-update-kubeconfig () {
 
 # kubectl exec -- rails console
 ke-rc () {
-    readonly pod=${1:?"The pod must be specified."}
-    kubectl exec -ti $pod -c portal -- bin/rails c
+    # readonly pod=${1:?"The pod must be specified."}
+    pod=${1}
+
+    if [[ -z "${pod// }" ]]; then
+        pod=$(kubectl get pods -oname | grep -E "^pod/elos-portal-[a-f0-9]{8,}-" | head -1)
+        if [[ -z "${pod// }" ]]; then
+            pod=$(kubectl get pods -oname | grep -E "^pod/portal-[a-f0-9]{8,}-" | head -1)
+        fi
+    fi
+
+    if [[ -z "${pod// }" ]]; then
+        echo "No pod found..."
+    else
+        echo "Running rails console on $pod"
+        kubectl exec -ti $pod -c portal -- bin/rails c
+    fi
 }
 
 k-delete-evicted () {
