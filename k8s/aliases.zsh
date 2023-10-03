@@ -1,7 +1,8 @@
 # TODO see https://github.com/Dbz/kube-aliases
 
 alias k="kubectl"
-alias k121="kubectl-1.21.14"
+alias k21="kubectl-1.21.14"
+alias k27="kubectl-1.27.2"
 alias kg="kubectl get"
 alias kl="kubectl logs"
 alias kd="kubectl describe"
@@ -11,12 +12,21 @@ alias kctx="kubectx"
 alias kns="kubens"
 alias klf-ing="stern nginx -n ingress-nginx -e query_range -e health -e thanos -e mini-profiler -e query_exemplars -e grafana"
 # alias klf-ing="klf -l app.kubernetes.io/name=ingress-nginx -n ingress-nginx --max-log-requests=20 | grep -v -e query_range -e health -e thanos -e mini-profiler -e query_exemplars -e grafana"
+alias k-roll="kubectl rollout restart deployment"
+
 
 alias kust="kustomize"
 alias kust-diff="kustomize build . | kubectl diff -f - || true"
 alias kust-apply="kustomize build . | kubectl apply -f -"
-alias kust121-diff="kustomize build . | kubectl-1.21.14 diff -f - || true"
-alias kust121-apply="kustomize build . | kubectl-1.21.14 apply -f -"
+alias kust21-diff="kustomize build . | kubectl-1.21.14 diff -f - || true"
+alias kust21-apply="kustomize build . | kubectl-1.21.14 apply -f -"
+alias km="kustomize"
+alias km-diff="kustomize build . | kubectl diff -f - || true"
+alias km-apply="kustomize build . | kubectl apply -f -"
+alias km21-diff="kustomize build . | kubectl-1.21.14 diff -f - || true"
+alias km21-apply="kustomize build . | kubectl-1.21.14 apply -f -"
+alias km27-diff="kustomize build . | kubectl-1.27.2 diff -f - || true"
+alias km27-apply="kustomize build . | kubectl-1.27.2 apply -f -"
 
 alias k-nod-full="kubectl get nodes -owide --show-labels"
 alias k-nod-pod="kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name"

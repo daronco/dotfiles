@@ -86,3 +86,35 @@ EOF
 kind-delete-default () {
     kind delete cluster
 }
+
+km-delete () {
+    kustomize build .
+    echo "\nDelete all from kustomize. Proceed?"
+    if confirm
+    then
+        kustomize build . | kubectl delete -f -
+    fi
+}
+
+# kubectl exec -- bash
+ke-bash () {
+    # readonly pod=${1:?"The pod must be specified."}
+    pod=${1}
+
+    container=${2} # optional
+
+    # if [[ -z "${pod// }" ]]; then
+    #     pod=$(kubectl get pods -oname | grep -E "^pod/elos-portal-[a-f0-9]{8,}-" | head -1)
+    #     if [[ -z "${pod// }" ]]; then
+    #         pod=$(kubectl get pods -oname | grep -E "^pod/portal-[a-f0-9]{8,}-" | head -1)
+    #     fi
+    # fi
+
+    # if [[ -z "${pod// }" ]]; then
+    #     echo "No pod found..."
+    # else
+    #     echo "Running rails console on $pod"
+    #     kubectl exec -ti $pod -c portal -- bin/rails c
+    # fi
+}
+
