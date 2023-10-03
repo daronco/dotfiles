@@ -81,7 +81,16 @@ cat-certs() {
     # done
 }
 
+cert-info() {
+    openssl x509 -in $1 -text -noout
+}
+
+cert-info-domains() {
+    cert-info $1 | grep DNS
+}
+
 # curl-cert-expiration mconf.com
-curl-cert-expiration() {
+cert-expiration() {
     curl -k https://$1 -vI 2>&1 | grep -e "expire date" -e "O="
 }
+alias curl-cert-expiration='cert-expiration'
