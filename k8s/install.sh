@@ -79,3 +79,9 @@ sudo install -o root -g root -m 0755 $TMPDIR/kubespy $DESTINATION
 # https://rclone.org/install/
 info "Installing rclone"
 curl https://rclone.org/install.sh | sudo bash
+
+# pv-migrate
+# https://bluelight.co/blog/how-to-migrate-persistent-volumes-on-kubernetes
+wget https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.0/pv-migrate_0.6.0_linux_x86_64.tar.gz
+tar -xvzf pv-migrate_0.6.0_linux_x86_64.tar.gz
+sudo mv pv-migrate /usr/local/bin
