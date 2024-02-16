@@ -118,3 +118,21 @@ ke-bash () {
     # fi
 }
 
+k-bk-elos-site-wp () {
+    # readonly pod=${1:?"The pod must be specified."}
+    pod=${1}
+
+    if [[ -z "${pod// }" ]]; then
+        pod=$(kubectl get pods -oname -n app-portal | grep -E "^pod/elos-site-wp-[a-f0-9]{8,}-" | head -1)
+    fi
+
+    if [[ -z "${pod// }" ]]; then
+        echo "No pod found..."
+    else
+        pod=${pod//pod\//}
+        target="/home/daronco/Mconf/Backups/wp-content-prd-`date +%F-%s`"
+        echo "Copying from $pod to $target"
+        kubectl cp -n app-portal -c wordpress $pod:/bitnami/wordpress/wp-content $target
+    fi
+}
+
