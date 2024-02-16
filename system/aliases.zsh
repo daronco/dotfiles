@@ -2,6 +2,8 @@
 # for aliases that can't be public
 FILE=~/.aliases.zsh.local && test -f $FILE && source $FILE
 
+alias vpn-ufrgs='sudo openvpn /home/daronco/.dotfiles/local/ufrgs/VPN-Servicos.ovpn'
+# alias vpn-ufrgs='cat  ~/Desktop/VPN/ufrgs-credentials | grep -A 1 leonardo; echo "---"; sudo openvpn ~/Desktop/VPN/VPN-Servicos.ovpn'
 alias genuuid='uuidgen'
 alias genguid='uuidgen'
 alias genpass='genhash 12'
