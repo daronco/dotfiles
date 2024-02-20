@@ -80,6 +80,12 @@ curl https://rclone.org/install.sh | sudo bash
 
 # pv-migrate
 # https://bluelight.co/blog/how-to-migrate-persistent-volumes-on-kubernetes
-wget https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.0/pv-migrate_0.6.0_linux_x86_64.tar.gz
-tar -xvzf pv-migrate_0.6.0_linux_x86_64.tar.gz
-sudo mv pv-migrate /usr/local/bin
+PVMIGRATE_VERSION=0.7.1
+DESTINATION=/usr/local/bin/pv-migrate
+TMPFILE=$(mktemp)
+TMPDIR=$(mktemp -d)
+info "Installing pv-migrate ${PVMIGRATE_VERSION} at ${DESTINATION}"
+wget https://github.com/utkuozdemir/pv-migrate/releases/download/v${PVMIGRATE_VERSION}/pv-migrate_${PVMIGRATE_VERSION}_linux_x86_64.tar.gz -O $TMPFILE
+echo tar -xvzf $TMPFILE -C $TMPDIR
+tar -xvzf $TMPFILE -C $TMPDIR
+sudo mv $TMPDIR/pv-migrate $DESTINATION
