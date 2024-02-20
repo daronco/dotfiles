@@ -1,22 +1,20 @@
 . $DOTFILES/_functions.sh
 
-KUBECTL_VERSION=1.25.4
-TMPFILE=$(mktemp)
-info "Installing kubectl ${KUBECTL_VERSION}"
-curl -Lo $TMPFILE "https://dl.k8s.io/release/v$KUBECTL_VERSION/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 $TMPFILE /usr/local/bin/kubectl
-
 KUBECTL_VERSION=1.21.14
 TMPFILE=$(mktemp)
 info "Installing kubectl ${KUBECTL_VERSION}"
 curl -Lo $TMPFILE "https://dl.k8s.io/release/v$KUBECTL_VERSION/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 $TMPFILE /usr/local/bin/kubectl-1.21.14
+sudo install -o root -g root -m 0755 $TMPFILE /usr/local/bin/kubectl-${KUBECTL_VERSION}
 
-KUBECTL_VERSION=1.27.2
+KUBECTL_VERSION=1.27.9
+KUBECTL_DEFAULT_VERSION=$KUBECTL_VERSION
 TMPFILE=$(mktemp)
 info "Installing kubectl ${KUBECTL_VERSION}"
 curl -Lo $TMPFILE "https://dl.k8s.io/release/v$KUBECTL_VERSION/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 $TMPFILE /usr/local/bin/kubectl-1.27.2
+sudo install -o root -g root -m 0755 $TMPFILE /usr/local/bin/kubectl-${KUBECTL_VERSION}
+
+info "Setting kubectl ${KUBECTL_DEFAULT_VERSION} as the default kubectl"
+sudo ln -s -f /usr/local/bin/kubectl-${KUBECTL_DEFAULT_VERSION} /usr/local/bin/kubectl
 
 info "Installing kubectx at /opt/kubectx"
 sudo sh -c ". $DOTFILES/_functions.sh; clone_or_update /opt/kubectx https://github.com/ahmetb/kubectx"

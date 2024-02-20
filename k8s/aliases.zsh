@@ -2,7 +2,6 @@
 
 alias k="kubectl"
 alias k21="kubectl-1.21.14"
-alias k27="kubectl-1.27.2"
 alias kg="kubectl get"
 alias kl="kubectl logs"
 alias kd="kubectl describe"
@@ -25,8 +24,6 @@ alias km-diff="kustomize build . | kubectl diff -f - || true"
 alias km-apply="kustomize build . | kubectl apply -f -"
 alias km21-diff="kustomize build . | kubectl-1.21.14 diff -f - || true"
 alias km21-apply="kustomize build . | kubectl-1.21.14 apply -f -"
-alias km27-diff="kustomize build . | kubectl-1.27.2 diff -f - || true"
-alias km27-apply="kustomize build . | kubectl-1.27.2 apply -f -"
 
 alias k-nod-full="kubectl get nodes -owide --show-labels"
 alias k-nod-pod="kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name"
