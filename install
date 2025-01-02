@@ -2,10 +2,20 @@
 #
 # Run all dotfiles installers.
 
-set -e
+set -ex
 
 . _functions.sh
 
 # find the installers and run them iteratively
 if [ -f system/install.sh ]; then sh -c "system/install.sh"; fi
 find . -name install.sh -not -path "./system/install.sh" | while read installer ; do sh -c "${installer}" ; done
+
+set +ex
+
+echo ""
+echo "TODO:"
+echo "[ ] For guake, edit the F12 shortcut with: https://github.com/Guake/guake/issues/1642#issuecomment-580668579"
+echo "[ ] Guake config: set font to monospace regular 9pt; set palette to Dracula; remove all or most transparency"
+
+echo ""
+echo "All done."

@@ -20,3 +20,7 @@ clone_or_update $OHMYZSH_PLUGINS_DIR/zsh-syntax-highlighting https://github.com/
 info "Installing zsh/pure into $DOTFILES/zsh/pure"
 mkdir -p "$DOTFILES/zsh"
 clone_or_update "$DOTFILES/zsh/pure" https://github.com/sindresorhus/pure.git
+
+info "Setting zsh as the default shell"
+cat /etc/shells
+sudo chsh -s /bin/zsh
