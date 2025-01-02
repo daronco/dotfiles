@@ -29,9 +29,9 @@ ke-rc () {
     pod=${1}
 
     if [[ -z "${pod// }" ]]; then
-        pod=$(kubectl get pods -oname | grep -E "^pod/elos-portal-[a-f0-9]{8,}-" | head -1)
+        pod=$(kubectl get pods -oname | grep -E "^pod/elos-portal-[a-f0-9]{8,}-" | tail -1)
         if [[ -z "${pod// }" ]]; then
-            pod=$(kubectl get pods -oname | grep -E "^pod/portal-[a-f0-9]{8,}-" | head -1)
+            pod=$(kubectl get pods -oname | grep -E "^pod/portal-[a-f0-9]{8,}-" | tail -1)
         fi
     fi
 

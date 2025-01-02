@@ -12,6 +12,7 @@ alias kns="kubens"
 alias klf-ing="stern nginx -n ingress-nginx -e query_range -e health -e thanos -e mini-profiler -e query_exemplars -e grafana"
 # alias klf-ing="klf -l app.kubernetes.io/name=ingress-nginx -n ingress-nginx --max-log-requests=20 | grep -v -e query_range -e health -e thanos -e mini-profiler -e query_exemplars -e grafana"
 alias k-roll="kubectl rollout restart deployment"
+alias k-del-force="kubectl delete pod --grace-period=0 --force"
 
 
 alias kust="kustomize"

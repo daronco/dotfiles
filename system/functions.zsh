@@ -94,3 +94,28 @@ cert-expiration() {
     curl -k https://$1 -vI 2>&1 | grep -e "expire date" -e "O="
 }
 alias curl-cert-expiration='cert-expiration'
+
+# find_large_files / 1000M
+find_large_files() {
+    local path=${1:-"/"}
+    local size=${2:-"1000M"}
+
+    /usr/bin/sudo find "$path" -xdev -type f -size "+$size"
+}
+
+# # find_largest_files / 20
+# find_largest_files() {
+#     local path=${1:-"/"}
+#     local num=${2:-"20"}
+
+#     find "$path" -xdev -type f -exec du -h {} + | sort -rh | head -n "$num"
+#     # sudo du -h -aBm "$path" 2>/dev/null | sort -nr | head -n "$num"
+# }
+
+compare_files() {
+    if cmp -s "$1" "$2"; then
+        printf 'The file "%s" is the same as "%s"\n' "$1" "$2"
+    else
+        printf 'The file "%s" is different from "%s"\n' "$1" "$2"
+    fi
+}
