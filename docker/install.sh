@@ -17,3 +17,9 @@ echo \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
+info "Allowing the user to run docker as non-root"
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker

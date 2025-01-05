@@ -15,7 +15,11 @@ set +ex
 echo ""
 echo "TODO:"
 echo "[ ] For guake, edit the F12 shortcut with: https://github.com/Guake/guake/issues/1642#issuecomment-580668579"
+echo "[ ] Ubuntu settings: check Appearance; check Ubuntu Desktop; check Power to disable 'Screen Blank'"
 echo "[ ] Guake config: set font to monospace regular 9pt; set palette to Dracula; remove all or most transparency"
-
+echo "[ ] Configure ngrok: ngrok config add-authtoken <token>. See https://download.ngrok.com/linux"
+echo "[ ] Docker: if it's failing, run ./fix-cgroup.sh"
+echo ""
+echo "** After the first install you might want to RESTART."
 echo ""
 echo "All done."
