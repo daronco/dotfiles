@@ -119,3 +119,19 @@ compare_files() {
         printf 'The file "%s" is different from "%s"\n' "$1" "$2"
     fi
 }
+
+# Setup all ssh keys available on keychain/ssh-agent
+ssh-keys-setup() {
+    local ask=${1:-true}
+    for possiblekey in ${HOME}/.ssh/*id_*; do
+        if grep -q PRIVATE "$possiblekey"; then
+            if [ "$ask" = true ]; then
+                eval $(keychain --eval $possiblekey)
+            else
+                eval $(keychain --noask -q --eval $possiblekey)
+            fi
+            # ssh-add "$possiblekey"
+        fi
+    done
+}
+alias ssh-keys="ssh-keys-setup"

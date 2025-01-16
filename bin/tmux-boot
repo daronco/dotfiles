@@ -13,5 +13,6 @@ cd ~/dev &&
     tmux new-window -n DEPLOY &&
     tmux new-window -n DEV &&
     tmux new-window -n RANDOM &&
+    tmux new-window -n VPN &&
     tmux selectw -t 1 &&
     tmux attach-session -t 0

@@ -9,6 +9,7 @@ set -ex
 # find the installers and run them iteratively
 if [ -f system/install.sh ]; then sh -c "system/install.sh"; fi
 find . -name install.sh -not -path "./system/install.sh" | while read installer ; do sh -c "${installer}" ; done
+if [ -f system/post_install.sh ]; then sh -c "system/post_install.sh"; fi
 
 set +ex
 
