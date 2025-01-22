@@ -55,12 +55,15 @@ curl -Lo $TMPFILE "https://github.com/kubernetes-sigs/kustomize/releases/downloa
 tar -xvf $TMPFILE -C $TMPDIR
 sudo install -o root -g root -m 0755 $TMPDIR/kustomize $DESTINATION
 
-# TODO:
-# curl -s https://fluxcd.io/install.sh | sudo bash
-# completions
-# echo "${fpath// /\n}" | grep -i completion
-# flux completion zsh > _flux
-# mv _flux ~/.oh-my-zsh/completions  # oh-my-zsh
+# flux
+# https://fluxcd.io/flux/cmd/
+FLUX_VERSION=2.2.3
+info "Installing flux v${FLUX_VERSION}"
+curl -s https://fluxcd.io/install.sh | sudo FLUX_VERSION=${FLUX_VERSION} bash
+# zsh completions
+# https://fluxcd.io/flux/cmd/flux_completion_zsh/
+flux completion zsh > /tmp/_flux
+mv /tmp/_flux ~/.oh-my-zsh/completions  # oh-my-zsh
 
 # kubespy
 # https://github.com/pulumi/kubespy

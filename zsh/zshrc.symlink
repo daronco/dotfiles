@@ -46,3 +46,6 @@ unset config_files
 
 # try to load ssh keys into ssh-agent
 ssh-keys-setup false
+
+# flux autocompletion
+command -v flux >/dev/null && . <(flux completion zsh)
