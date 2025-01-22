@@ -130,9 +130,9 @@ k-bk-elos-site-wp () {
         echo "No pod found..."
     else
         pod=${pod//pod\//}
-        target="/home/daronco/Mconf/Backups/wp-content-prd-`date +%F-%s`"
+        target="~/Mconf/Backups/wp-content-prd-`date +%F-%s`"
         echo "Copying from $pod to $target"
-        kubectl cp -n app-portal -c wordpress $pod:/bitnami/wordpress/wp-content $target
+        kubectl cp --retries=5 -n app-portal -c wordpress $pod:/bitnami/wordpress/wp-content $target
     fi
 }
 
