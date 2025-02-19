@@ -6,13 +6,16 @@ set -xe
 
 # [ -z "$TMUX" ] && command -v tmux > /dev/null &&
 cd ~/dev &&
-    tmux rename-window "*"
+    tmux kill-pane -a &&            # kill all panes
+    tmux kill-window -a &&          # kill all other windows
+    tmux rename-window "*" && (tmux move-window -t 1 || true) && tmux run-shell "htop" &&
     tmux split-window -v &&
     tmux split-window -h &&
-    tmux new-window -n K8S &&
-    tmux new-window -n DEPLOY &&
-    tmux new-window -n DEV &&
+    tmux new-window -n K8S && tmux split-window -h &&
+    tmux new-window -n DEPLOY && tmux split-window -h &&
+    tmux new-window -n DEV && tmux split-window -h &&
     tmux new-window -n RANDOM &&
     tmux new-window -n VPN &&
+    tmux new-window -n PESSOAL && tmux split-window -v &&
     tmux selectw -t 1 &&
     tmux attach-session -t 0
