@@ -1,19 +1,19 @@
 do-update-kubeconfig () {
     readonly ctx=${1:?"The cluster must be specified."}
 
-    TMP_CONFIG=~/.kube/bk/$ctx.yaml
+    TMPFILE=$(mktemp)
+    BKFILE=~/.kube/bk/$ctx.yaml
     KUBECONFIG=~/.kube/config
 
     print_info "Downloading kubeconfig for $ctx"
-    if doctl kubernetes cluster kubeconfig show $ctx > $TMP_CONFIG
+    if doctl kubernetes cluster kubeconfig show $ctx > $TMPFILE
     then
-        TOKEN=$(grep -o -E "token:.*" $TMP_CONFIG | cut -d ' ' -f2)
-        USER=$(grep "users:" $TMP_CONFIG -A 1 | tail -1 | sed 's/.*name: //g')
-        print_success "Downloaded to $TMP_CONFIG"
+        TOKEN=$(grep -o -E "token:.*" $TMPFILE | cut -d ' ' -f2)
+        USER=$(grep "users:" $TMPFILE -A 1 | tail -1 | sed 's/.*name: //g')
+        print_success "Downloaded to $TMPFILE"
 
-        TMPFILE=$(mktemp)
-        print_info "Backing up $KUBECONFIG on $TMPFILE"
-        cat $KUBECONFIG > $TMPFILE
+        print_info "Backing up $KUBECONFIG on $BKFILE"
+        cat $KUBECONFIG > $BKFILE
 
         print_info "Setting new token for user '$USER' on $KUBECONFIG"
         sed -e "/$USER/ { n; n; s/token:.*/token: $TOKEN/; }" -i ~/.kube/config
