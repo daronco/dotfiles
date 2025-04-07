@@ -26,6 +26,7 @@ alias reload-gnome-shell='killall -3 gnome-shell'
 alias prettyjson='python -m json.tool'
 alias myip='curl ifconfig.me' # alias myip='wget https://ipinfo.io/ip -qO -'
 alias dfh='df -h --total | grep -v -e tmpfs -e loop -e udev'
+alias pjdot='cd ~/.dotfiles'
 
 #
 # old
