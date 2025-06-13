@@ -49,3 +49,6 @@ ssh-keys-setup false
 
 # flux autocompletion
 command -v flux >/dev/null && . <(flux completion zsh)
+
+# Created by `pipx` on 2025-04-02 01:19:49
+export PATH="$PATH:/home/daronco/.local/bin"

@@ -136,3 +136,21 @@ k-bk-elos-site-wp () {
     fi
 }
 
+st () {
+    app=${1}
+    if [[ -n "${app// }" ]]; then
+        if [[ "$app" == "portal" ]]; then
+            cmd="stern -t portal -c portal --since 1m -n app-portal"
+        elif [[ "$app" == "proxy" || "$app" == "api-proxy" ]]; then
+            cmd="stern -t proxy -n app-api --since 1m -e '/metrics'"
+        elif [[ "$app" == "api-data" ]]; then
+            cmd="stern -t api-data -n app-api-data -c app --since 1m -e '/metrics'"
+        else
+            cmd="stern $@"
+        fi
+    else
+        cmd="stern $@"
+    fi
+    echo "$cmd"
+    eval "$cmd"
+}

@@ -66,7 +66,7 @@ shapass() {
     echo -n $1 | sha256sum | cut -f1 -d\ | xxd -r -p | base64 | cut -c -${2:-32}
 }
 
-# cat-certs main-cert.pem intermediate1.pem intermediate2.pem
+# Concatenate multiple certificate files into one combined PEM file
 cat-certs() {
     echo "Combining the files: $@"
     filename=$1
@@ -81,21 +81,23 @@ cat-certs() {
     # done
 }
 
+# Display detailed information about a certificate file
 cert-info() {
     openssl x509 -in $1 -text -noout
 }
 
+# List all DNS domains from a certificate file
 cert-info-domains() {
     cert-info $1 | grep DNS
 }
 
-# curl-cert-expiration mconf.com
+# Show the SSL certificate expiration date for a given domain
 cert-expiration() {
     curl -k https://$1 -vI 2>&1 | grep -e "expire date" -e "O="
 }
 alias curl-cert-expiration='cert-expiration'
 
-# find_large_files / 1000M
+# Find large files in a directory (default: /, size: 1000M)
 find_large_files() {
     local path=${1:-"/"}
     local size=${2:-"1000M"}
@@ -135,3 +137,48 @@ ssh-keys-setup() {
     done
 }
 alias ssh-keys="ssh-keys-setup"
+
+# Reload all .zsh files in ~/.dotfiles
+dot-reload() {
+    for file in $(find $HOME/.dotfiles -type f -name "*.zsh"); do
+        source "$file"
+    done
+    echo "Reloaded all .zsh files in ~/.dotfiles"
+}
+
+# List all function names and their description
+zsh-ls-func() {
+    find "$HOME/.dotfiles" -mindepth 2 -maxdepth 2 -type f -name "*.zsh" | while read -r file; do
+        awk '
+        {
+            lines[NR] = $0
+        }
+        /^[a-zA-Z0-9_-]+[ ]*\(\)[ ]*\{/ {
+            funcname = $1
+            sub(/[ ]*\(\)[ ]*\{.*/, "", funcname)
+            desc = ""
+            for (i = NR - 1; i > 0; i--) {
+                if (lines[i] ~ /^#[ ]?/) {
+                    desc = lines[i] " " desc
+                } else if (lines[i] !~ /^\s*$/) {
+                    break
+                }
+            }
+            if (funcname != "") print funcname "|" desc
+        }' "$file"
+    done | sort -t'|' -k1,1 -u | awk -F'|' '{printf "%-30s %s\n", $1, $2}'
+}
+
+# List all alias names and their definitions
+zsh-ls-alias() {
+    find "$HOME/.dotfiles" -mindepth 2 -maxdepth 2 -type f -name "*.zsh" | while read -r file; do
+        awk '/^alias[ ]+[a-zA-Z0-9_-]+=/ {
+            # Extract alias name and definition
+            match($0, /^alias[ ]+([a-zA-Z0-9_-]+)=/, arr)
+            aliasname = arr[1]
+            def = $0
+            sub(/^alias[ ]+[a-zA-Z0-9_-]+=[\\'\''"]?/, "", def)
+            print aliasname "|" def
+        }' "$file"
+    done | sort -t'|' -k1,1 -u | awk -F'|' '{printf "%-30s %s\n", $1, $2}'
+}

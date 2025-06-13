@@ -14,8 +14,9 @@ cd ~/dev &&
     tmux new-window -n K8S && tmux split-window -h &&
     tmux new-window -n DEPLOY && tmux split-window -h &&
     tmux new-window -n DEV && tmux split-window -h &&
-    tmux new-window -n RANDOM &&
+    tmux new-window -n WORKBENCH &&
     tmux new-window -n VPN &&
-    tmux new-window -n PESSOAL && tmux split-window -v &&
+    tmux new-window -n RANDOM &&
+    tmux new-window -n PESSOAL && tmux split-window -h &&
     tmux selectw -t 1 &&
     tmux attach-session -t 0
