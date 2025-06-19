@@ -2,6 +2,19 @@
 
 . $DOTFILES/_functions.sh
 
+# rbenv
+info "Installing rbenv"
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+# python
+info "Installing python packages"
+sudo apt install python3-pip -y #skip this step if pip is already installed
+# pipx: https://github.com/pypa/pipx
+# for issues of pipx on ubuntu see https://github.com/pypa/pipx/issues/1481
+sudo apt install pipx -y
+~/.local/bin/pipx ensurepath
+
 # https://code.visualstudio.com/docs/setup/linux
 info "Installing vscode"
 sudo snap install --classic code
@@ -18,8 +31,3 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
 # DigitalOcean
 info "Installing doctl"
 sudo snap install doctl
-
-# rbenv
-info "Installing rbenv"
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
