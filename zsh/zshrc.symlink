@@ -51,4 +51,11 @@ ssh-keys-setup false
 command -v flux >/dev/null && . <(flux completion zsh)
 
 # Created by `pipx` on 2025-04-02 01:19:49
-export PATH="$PATH:/home/daronco/.local/bin"
+export PATH="$PATH:~/.local/bin"
+
+# rbenv
+eval "$(rbenv init - --no-rehash bash)"
+# assuming that rbenv was installed to `~/.rbenv`
+FPATH=~/.rbenv/completions:"$FPATH"
+autoload -U compinit
+compinit

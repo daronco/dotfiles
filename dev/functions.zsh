@@ -79,3 +79,7 @@ pjcode () {
 ngrok-ls () {
     curl -s http://localhost:4040/api/tunnels | jq '.tunnels.[] | {mame: .name, url: .public_url }'
 }
+
+rdoc2md() {
+    ruby -r rdoc -e "puts RDoc::Markup::ToMarkdown.new.convert File.read(\"$1\")";
+}
