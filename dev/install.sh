@@ -4,8 +4,23 @@
 
 # rbenv
 info "Installing rbenv"
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+if [ -d "$HOME/.rbenv" ]; then
+  info "~/.rbenv exists, pulling latest changes"
+  git -C "$HOME/.rbenv" fetch --all
+  git -C "$HOME/.rbenv" reset --hard origin/master
+else
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+fi
+if [ -d "$HOME/.rbenv/plugins/ruby-build" ]; then
+  info "~/.rbenv/plugins/ruby-build exists, pulling latest changes"
+  git -C "$HOME/.rbenv/plugins/ruby-build" fetch --all
+  git -C "$HOME/.rbenv/plugins/ruby-build" reset --hard origin/master
+else
+  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+fi
+# dependencies for ruby builds
+info "Installing dependencies for ruby builds"
+sudo apt install curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libffi-dev libgdbm-dev -y
 
 # python
 info "Installing python packages"
