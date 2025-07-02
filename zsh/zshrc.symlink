@@ -59,3 +59,6 @@ eval "$(rbenv init - --no-rehash bash)"
 FPATH=~/.rbenv/completions:"$FPATH"
 autoload -U compinit
 compinit
+
+# For fly.io
+export PATH=$PATH:$HOME/.fly/bin

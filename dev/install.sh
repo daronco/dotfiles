@@ -20,7 +20,8 @@ else
 fi
 # dependencies for ruby builds
 info "Installing dependencies for ruby builds"
-sudo apt install curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libffi-dev libgdbm-dev -y
+sudo apt install curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
+                 libyaml-dev libffi-dev libgdbm-dev libmysqlclient-dev -y
 
 # python
 info "Installing python packages"
@@ -46,3 +47,6 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
 # DigitalOcean
 info "Installing doctl"
 sudo snap install doctl
+
+# Fly.io: https://fly.io/docs/flyctl/install/
+curl -L https://fly.io/install.sh | sh
